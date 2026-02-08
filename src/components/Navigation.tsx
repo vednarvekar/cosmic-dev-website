@@ -9,13 +9,21 @@ const navItems = [
   { name: 'Contact', href: '#contact' },
 ];
 
+const NAME = 'Ved Narvekar';
+
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [flickerDone, setFlickerDone] = useState(false);
 
+  // Stop flicker after 3s
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const timer = setTimeout(() => setFlickerDone(true), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Navbar blur on scroll
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -28,16 +36,68 @@ const Navigation = () => {
         isScrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : ''
       }`}
     >
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-6 py-2">
         <div className="flex items-center justify-between">
+
+          {/* LOGO + NAME */}
           <motion.a
             href="#hero"
-            className="font-mono text-lg font-bold text-syntax-green"
+            className="flex items-center  font-mono text-lg font-bold"
             whileHover={{ scale: 1.05 }}
           >
-            {'<dev />'}
+            {/* LOGO (NO FLICKER, BIGGER) */}
+            <img
+              src="/logo.svg"
+              alt="Ved Narvekar logo"
+              className="w-14 h-14 drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]"
+            />
+
+            {/* NAME (LETTER-PAIR FLICKER) */}
+            <span className="flex tracking-wide text-white">
+              {NAME.split('').map((char, index) => {
+                if (char === ' ') {
+                  return <span key={index} className="w-2" />;
+                }
+
+                const isEven = index % 2 === 0;
+
+                return (
+                  <motion.span
+                    key={index}
+                    initial={{ opacity: 0.3 }}
+                    animate={
+                      flickerDone
+                        ? { opacity: 1 }
+                        : {
+                            opacity: isEven
+                              ? [0.3, 1, 0.4, 1]
+                              : [1, 0.4, 1, 0.3],
+                          }
+                    }
+                    transition={
+                      flickerDone
+                        ? { duration: 1 }
+                        : {
+                            duration: 1,
+                            repeat: Infinity,
+                            repeatType: 'mirror',
+                            delay: isEven ? 0.0 : 0.30, // 👈 alternating pairs
+                          }
+                    }
+                    className={`${
+                      flickerDone
+                        ? 'drop-shadow-[0_0_12px_rgba(255,255,255,0.7)]'
+                        : ''
+                    }`}
+                  >
+                    {char}
+                  </motion.span>
+                );
+              })}
+            </span>
           </motion.a>
-          
+
+          {/* NAV LINKS */}
           <ul className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <li key={item.name}>
@@ -54,6 +114,7 @@ const Navigation = () => {
             ))}
           </ul>
 
+          {/* CTA */}
           <a
             href="#contact"
             className="font-mono text-sm px-4 py-2 bg-primary/20 border border-primary rounded-md text-primary hover:bg-primary hover:text-primary-foreground transition-all"

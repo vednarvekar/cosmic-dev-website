@@ -4,24 +4,33 @@ import { useRef } from 'react';
 
 const codeLines = [
   { lineNum: 1, content: <><span className="syntax-keyword">const</span> <span className="syntax-variable">developer</span> <span className="syntax-keyword">=</span> {'{'}</> },
-  { lineNum: 2, content: <>&nbsp;&nbsp;<span className="syntax-string">name</span>: <span className="syntax-string">"Your Name"</span>,</> },
-  { lineNum: 3, content: <>&nbsp;&nbsp;<span className="syntax-string">title</span>: <span className="syntax-string">"Software Engineer"</span>,</> },
-  { lineNum: 4, content: <>&nbsp;&nbsp;<span className="syntax-string">location</span>: <span className="syntax-string">"Earth 🌍"</span>,</> },
+
+  { lineNum: 2, content: <>&nbsp;&nbsp;<span className="syntax-string">name</span>: <span className="syntax-string">"Ved Vijay Narvekar"</span>,</> },
+  { lineNum: 3, content: <>&nbsp;&nbsp;<span className="syntax-string">role</span>: <span className="syntax-string">"Software Engineer"</span>,</> },
+  { lineNum: 4, content: <>&nbsp;&nbsp;<span className="syntax-string">location</span>: <span className="syntax-string">"Mumbai, India"</span>,</> },
+
   { lineNum: 5, content: <></> },
-  { lineNum: 6, content: <>&nbsp;&nbsp;<span className="syntax-comment">// What drives me</span></> },
-  { lineNum: 7, content: <>&nbsp;&nbsp;<span className="syntax-string">passion</span>: <span className="syntax-string">"Building scalable solutions"</span>,</> },
-  { lineNum: 8, content: <>&nbsp;&nbsp;<span className="syntax-string">focus</span>: <span className="syntax-string">"Clean code & great UX"</span>,</> },
+
+  { lineNum: 6, content: <>&nbsp;&nbsp;<span className="syntax-comment">// What I care about</span></> },
+  { lineNum: 7, content: <>&nbsp;&nbsp;<span className="syntax-string">interests</span>: <span className="syntax-string">"Backend systems, OSS, automation"</span>,</> },
+  { lineNum: 8, content: <>&nbsp;&nbsp;<span className="syntax-string">focus</span>: <span className="syntax-string">"Learning by building real projects"</span>,</> },
+
   { lineNum: 9, content: <></> },
-  { lineNum: 10, content: <>&nbsp;&nbsp;<span className="syntax-comment">// My journey</span></> },
-  { lineNum: 11, content: <>&nbsp;&nbsp;<span className="syntax-string">experience</span>: <span className="syntax-number">5</span><span className="syntax-keyword">+</span> <span className="syntax-string">years</span>,</> },
-  { lineNum: 12, content: <>&nbsp;&nbsp;<span className="syntax-string">projects</span>: <span className="syntax-number">50</span><span className="syntax-keyword">+</span> <span className="syntax-string">shipped</span>,</> },
-  { lineNum: 13, content: <>&nbsp;&nbsp;<span className="syntax-string">coffee</span>: <span className="syntax-number">∞</span> <span className="syntax-string">cups</span>,</> },
-  { lineNum: 14, content: <></> },
+
+  { lineNum: 10, content: <>&nbsp;&nbsp;<span className="syntax-comment">// Current state</span></> },
+  { lineNum: 11, content: <>&nbsp;&nbsp;<span className="syntax-string">experienceLevel</span>: <span className="syntax-string">"Early-career, project-driven"</span>,</> },
+  { lineNum: 12, content: <>&nbsp;&nbsp;<span className="syntax-string">projects</span>: <span className="syntax-string">"Sentinel OSS, platform backends"</span>,</> },
+
+  { lineNum: 13, content: <></> },
+
+  { lineNum: 14, content: <>&nbsp;&nbsp;<span className="syntax-comment">// How I work</span></> },
   { lineNum: 15, content: <>&nbsp;&nbsp;<span className="syntax-function">code</span>: <span className="syntax-keyword">() =&gt;</span> {'{'}</> },
-  { lineNum: 16, content: <>&nbsp;&nbsp;&nbsp;&nbsp;<span className="syntax-keyword">return</span> <span className="syntax-string">"Something awesome"</span>;</> },
+  { lineNum: 16, content: <>&nbsp;&nbsp;&nbsp;&nbsp;<span className="syntax-keyword">return</span> <span className="syntax-string">"Build → break → fix → learn"</span>;</> },
   { lineNum: 17, content: <>&nbsp;&nbsp;{'}'}</> },
+
   { lineNum: 18, content: <>{'};'}</> },
 ];
+
 
 const AboutSection = () => {
   const ref = useRef(null);

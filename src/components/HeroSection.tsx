@@ -7,13 +7,38 @@ const HeroSection = () => {
   const [currentLine, setCurrentLine] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
 
-  const lines = [
-    { prefix: '~$', text: ' whoami', delay: 100 },
-    { prefix: '>', text: ' Software Engineer', delay: 80, isOutput: true },
-    { prefix: '~$', text: ' cat skills.txt', delay: 100 },
-    { prefix: '>', text: ' React | TypeScript | Node.js | PostgreSQL', delay: 50, isOutput: true },
-    { prefix: '~$', text: ' echo "Welcome to my portfolio"', delay: 80 },
-  ];
+const lines = [
+  { prefix: '~$', text: ' whoami', delay: 100 },
+  { prefix: '>', text: ' Software Engineer', delay: 80, isOutput: true },
+
+  // { prefix: '~$', text: ' pwd', delay: 100 },
+  // { prefix: '   >', text: ' /home/ved/building', delay: 60, isOutput: true },
+
+  { prefix: '~$', text: ' cat skills.core', delay: 100 },
+  { 
+    prefix: '  >', 
+    text: ' Node.js | Express | PostgreSQL | Next.js | TypeScript | Python | AI/ML | C++ ', 
+    delay: 50, 
+    isOutput: true 
+  },
+
+  // { prefix: '~$', text: ' cat skills', delay: 100 },
+  // { 
+  //   prefix: '>', 
+  //   text: ' Data Structures | OOP | C++ | System Design | AI/ML | Python', 
+  //   delay: 50, 
+  //   isOutput: true 
+  // },
+
+  { prefix: '~$', text: ' cat README.md', delay: 100 },
+  { 
+    prefix: '>', 
+    text: ' echo "Welcome to my portfolio. Scroll to explore."', 
+    delay: 60, 
+    isOutput: true 
+  },
+];
+
 
   useEffect(() => {
     if (currentLine >= lines.length) return;
@@ -64,7 +89,7 @@ const HeroSection = () => {
             
             <div className="p-6 font-mono text-sm md:text-base space-y-2 min-h-[300px]">
               {lines.slice(0, currentLine).map((line, index) => (
-                <div key={index} className="flex items-start">
+                <div key={index} className={`flex items-start ${line.isOutput ? 'pl-6' : ''}`}>
                   <span className={line.isOutput ? 'text-syntax-cyan' : 'text-syntax-green'}>
                     {line.prefix}
                   </span>

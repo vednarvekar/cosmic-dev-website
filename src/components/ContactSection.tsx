@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { Send, Check, AlertCircle, Loader2 } from 'lucide-react';
 import Globe3D from './Globe3D';
+import EarthCanvas from './Earth';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
@@ -158,9 +159,10 @@ const ContactSection = () => {
               initial={{ opacity: 0, x: 30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="hidden lg:block"
+              className="hidden lg:block w-[600px] h-[600px]"
             >
-              <Globe3D />
+              {/* <Globe3D /> */}
+              <EarthCanvas />
               <p className="text-center font-mono text-sm text-muted-foreground mt-4">
                 <span className="text-syntax-green">●</span> Available for remote work worldwide
               </p>

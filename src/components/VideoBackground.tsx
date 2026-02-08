@@ -1,6 +1,6 @@
 const VideoBackground = () => {
   return (
-    <div className="video-background">
+    <div className="fixed inset-0 -z-10 overflow-hidden">
       <video
         autoPlay
         loop
@@ -8,11 +8,12 @@ const VideoBackground = () => {
         playsInline
         className="w-full h-full object-cover"
       >
-        <source src="/background.mov" type="video/mp4" />
+        <source src="/background.mp4" type="video/mp4" />
       </video>
-      <div className="video-overlay" />
+      <div className="absolute inset-0 " />
     </div>
   );
 };
+
 
 export default VideoBackground;
