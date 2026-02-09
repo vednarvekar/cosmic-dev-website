@@ -86,9 +86,9 @@ const TechStackSection = () => {
       <div className="mx-auto max-w-5xl px-6">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 2 }}
         >
           <h2 className="font-mono text-3xl text-center mb-4">
             <span className="text-syntax-cyan">npm</span>{' '}
@@ -106,7 +106,7 @@ const TechStackSection = () => {
                 {section.category}
               </h3>
 
-              <div className="grid md:grid-cols-3 gap-3">
+              <div className="grid md:grid-cols-2 gap-3">
                 {section.items.map((tech) => (
                   <motion.div
                     key={tech.name}

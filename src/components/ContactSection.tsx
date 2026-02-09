@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { Send, Check, AlertCircle, Loader2 } from 'lucide-react';
-import Globe3D from './Globe3D';
+// import Globe3D from './Globe3D';
 import EarthCanvas from './Earth';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
