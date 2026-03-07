@@ -18,8 +18,8 @@ const projects = [
     name: 'api-gateway',
     description: 'High-performance API gateway with rate limiting, caching, and authentication middleware.',
     tech: ['TypeScript', 'Redis', 'Docker', 'AWS'],
-    stars: 256,
-    forks: 67,
+    // stars: 256,
+    // forks: 67,
     status: 'developing',
     demoUrl: '#',
     githubUrl: '#',
@@ -38,21 +38,21 @@ const projects = [
     name: 'cli-toolkit',
     description: 'Developer CLI toolkit for automating common development tasks and workflows.',
     tech: ['Node.js', 'Commander', 'Inquirer', 'Chalk'],
-    stars: 445,
-    forks: 112,
+    // stars: 445,
+    // forks: 112,
     status: 'developing',
     demoUrl: '#',
     githubUrl: '#',
   },
   {
-    name: 'sense-oss',
+    name: 'sentinel-oss',
     description: 'Analyzes open-source repositories to help developers tackle issues quickly. ',
     tech: ['Redis', 'TypeScript', 'PostgresSQL', 'Fastify'],
-    stars: 167,
-    forks: 45,
-    status: 'developing',
-    demoUrl: '#',
-    githubUrl: '#',
+    // stars: 167,
+    // forks: 45,
+    status: 'stable',
+    demoUrl: 'https://sentinel-hosting-api.vercel.app/',
+    githubUrl: 'https://github.com/vednarvekar/sentinel-oss-core',
   },
   // {
   //   name: 'mobile-app',
@@ -73,6 +73,16 @@ const projects = [
     status: 'developing',
     demoUrl: '#',
     githubUrl: '#',
+  },
+  {
+    name: 'pixel-image-analyzer',
+    description: 'ML trained app (Resnet-18), analyses real and AI generated images.',
+    tech: ['Python', 'Node.js', 'Supabase', 'Resnet-18'],
+    stars: 89,
+    forks: 21,
+    status: 'production',
+    demoUrl: 'https://pixel-hosting-mu.vercel.app/',
+    githubUrl: 'https://github.com/vednarvekar/Pixel',
   },
 ];
 
@@ -95,7 +105,7 @@ const ProjectsSection = () => {
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.2 }}
         >
           <h2 className="font-mono text-2xl md:text-3xl mb-4 text-center">
             <span className="text-syntax-cyan">git</span>{' '}
@@ -113,8 +123,8 @@ const ProjectsSection = () => {
                 key={project.name}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
-                whileHover={{ y: -5 }}
+                transition={{ delay: 0.2 + index * 0.1, duration: 0.2 }}
+                whileHover={{ scale: 1.05, y: -4 }}
                 className="group"
               >
                 <div className="terminal-window h-full">

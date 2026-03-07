@@ -17,6 +17,7 @@ const Footer = () => {
             <span className="text-syntax-green">{'<dev /> '}</span>
             <span>© Ved Narvekar.{new Date().getFullYear()} </span>
             <span> All rights reserved.</span>
+                        <div className="text-syntax-green">ved.v.narvekar@gmail.com</div>
           </div>
 
           <div className="flex items-center gap-4">
