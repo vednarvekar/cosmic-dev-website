@@ -179,9 +179,9 @@ const ProjectsSection = () => {
                       </div>
                       <div className="flex items-center gap-2">
                         <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          href={project.githubUrl === '#' ? `/under-development?project=${encodeURIComponent(project.name)}` : project.githubUrl}
+                          target={project.githubUrl === '#' ? undefined : "_blank"}
+                          rel={project.githubUrl === '#' ? undefined : "noopener noreferrer"}
                           // className="p-2 text-muted-foreground hover:text-foreground transition-colors"
                           className="p-2 hover:text-syntax-orange transition-colors"
                           aria-label="GitHub"
@@ -189,9 +189,9 @@ const ProjectsSection = () => {
                           <Github size={16} />
                         </a>
                         <a
-                          href={project.demoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          href={project.demoUrl === '#' ? `/under-development?project=${encodeURIComponent(project.name)}` : project.demoUrl}
+                          target={project.demoUrl === '#' ? undefined : "_blank"}
+                          rel={project.demoUrl === '#' ? undefined : "noopener noreferrer"}
                           // className="p-2 text-muted-foreground hover:text-syntax-green transition-colors"
                           className="p-2  hover:text-syntax-green transition-colors"
                           aria-label="Live Demo"
