@@ -180,6 +180,8 @@ const ProjectsSection = () => {
                       <div className="flex items-center gap-2">
                         <a
                           href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           // className="p-2 text-muted-foreground hover:text-foreground transition-colors"
                           className="p-2 hover:text-syntax-orange transition-colors"
                           aria-label="GitHub"
@@ -188,6 +190,8 @@ const ProjectsSection = () => {
                         </a>
                         <a
                           href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           // className="p-2 text-muted-foreground hover:text-syntax-green transition-colors"
                           className="p-2  hover:text-syntax-green transition-colors"
                           aria-label="Live Demo"
