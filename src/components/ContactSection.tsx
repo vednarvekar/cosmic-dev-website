@@ -39,7 +39,7 @@ const ContactSection = () => {
   return (
     <section id="contact" className="min-h-screen py-20 relative overflow-hidden">
 
-      {/* Background glows — matches other sections */}
+      {/* Background glows */}
       <div
         className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.04] pointer-events-none"
         style={{ background: 'radial-gradient(circle, #00ff88 0%, transparent 70%)' }}
@@ -49,9 +49,9 @@ const ContactSection = () => {
         style={{ background: 'radial-gradient(circle, #7c6aff 0%, transparent 70%)' }}
       />
 
-      {/* Mobile-only Earth in background */}
+      {/* Mobile Earth — behind everything, full section height, centered */}
       <div className="lg:hidden absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-        <div className="w-[380px] h-[380px] opacity-20">
+        <div className="w-[420px] h-[420px] opacity-40">
           <EarthCanvas />
         </div>
       </div>
@@ -81,23 +81,45 @@ const ContactSection = () => {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              {/* Glass terminal card */}
+              {/*
+                Mobile: near-fully transparent glass so Earth shows through
+                Desktop (lg:): normal opaque glass card
+                We achieve this by overriding inline styles via a wrapper
+                that swaps background opacity using a CSS custom property trick
+                — simpler to just use two separate style objects via a flag.
+              */}
               <div
-                className="relative rounded-xl overflow-hidden border border-white/[0.07] group"
+                className="relative rounded-xl overflow-hidden border group
+                  border-white/[0.07] lg:border-white/[0.07]"
                 style={{
+                  /* Desktop: normal glass */
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.25) 100%)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
                   boxShadow: '0 0 0 1px rgba(255,255,255,0.04), 0 32px 64px rgba(0,0,0,0.35)',
                 }}
               >
+                {/*
+                  Mobile transparency overlay — sits on top of the card background
+                  on mobile and cancels out the dark bg, making it see-through.
+                  On lg+ it's hidden.
+                */}
+                <div
+                  className="lg:hidden absolute inset-0 z-0 rounded-xl"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.08) 100%)',
+                    backdropFilter: 'blur(6px)',
+                    WebkitBackdropFilter: 'blur(6px)',
+                  }}
+                />
+
                 {/* Top shimmer */}
-                <div className="absolute top-0 left-12 right-12 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-white/30 transition-all duration-500" />
+                <div className="absolute top-0 left-12 right-12 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-white/30 transition-all duration-500 z-10" />
 
                 {/* Terminal header */}
                 <div
-                  className="flex items-center gap-2 px-4 py-3 border-b border-white/[0.05]"
-                  style={{ background: 'rgba(0,0,0,0.2)' }}
+                  className="relative z-10 flex items-center gap-2 px-4 py-3 border-b border-white/[0.05]"
+                  style={{ background: 'rgba(0,0,0,0.25)' }}
                 >
                   <span className="w-3 h-3 rounded-full bg-red-500/70" />
                   <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
@@ -113,9 +135,11 @@ const ContactSection = () => {
                   </div>
                 </div>
 
-                {/* Form body */}
-                <form onSubmit={handleSubmit} className="p-6 space-y-5"
-                  style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.1) 100%)' }}
+                {/* Form body — transparent bg on mobile */}
+                <form
+                  onSubmit={handleSubmit}
+                  className="relative z-10 p-6 space-y-5"
+                  style={{ background: 'transparent' }}
                 >
                   <div className="space-y-2">
                     <label className="font-mono text-xs text-syntax-cyan flex items-center gap-1">
@@ -127,7 +151,7 @@ const ContactSection = () => {
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Enter your name..."
                       required
-                      className="font-mono text-sm bg-white/[0.03] border-white/10 focus:border-syntax-green/50 focus:bg-white/[0.05] placeholder:text-muted-foreground/30 transition-colors duration-200 rounded-lg"
+                      className="font-mono text-sm bg-white/[0.06] border-white/10 focus:border-syntax-green/50 focus:bg-white/[0.08] placeholder:text-muted-foreground/30 transition-colors duration-200 rounded-lg"
                     />
                   </div>
 
@@ -141,7 +165,7 @@ const ContactSection = () => {
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="Enter your email..."
                       required
-                      className="font-mono text-sm bg-white/[0.03] border-white/10 focus:border-syntax-green/50 focus:bg-white/[0.05] placeholder:text-muted-foreground/30 transition-colors duration-200 rounded-lg"
+                      className="font-mono text-sm bg-white/[0.06] border-white/10 focus:border-syntax-green/50 focus:bg-white/[0.08] placeholder:text-muted-foreground/30 transition-colors duration-200 rounded-lg"
                     />
                   </div>
 
@@ -155,7 +179,7 @@ const ContactSection = () => {
                       placeholder="Type your message..."
                       required
                       rows={4}
-                      className="font-mono text-sm bg-white/[0.03] border-white/10 focus:border-syntax-green/50 focus:bg-white/[0.05] placeholder:text-muted-foreground/30 transition-colors duration-200 resize-none rounded-lg"
+                      className="font-mono text-sm bg-white/[0.06] border-white/10 focus:border-syntax-green/50 focus:bg-white/[0.08] placeholder:text-muted-foreground/30 transition-colors duration-200 resize-none rounded-lg"
                     />
                   </div>
 
@@ -165,18 +189,10 @@ const ContactSection = () => {
                     className="w-full font-mono text-sm bg-syntax-green/10 border border-syntax-green/30 text-syntax-green hover:bg-syntax-green/20 hover:border-syntax-green/60 transition-all duration-200 rounded-lg"
                     style={{ backdropFilter: 'blur(8px)' }}
                   >
-                    {status === 'loading' && (
-                      <><Loader2 className="animate-spin mr-2" size={14} />Sending...</>
-                    )}
-                    {status === 'success' && (
-                      <><Check className="mr-2" size={14} />Message Sent!</>
-                    )}
-                    {status === 'error' && (
-                      <><AlertCircle className="mr-2" size={14} />Error — Retry</>
-                    )}
-                    {status === 'idle' && (
-                      <><Send className="mr-2" size={14} />{'> send_message'}</>
-                    )}
+                    {status === 'loading' && <><Loader2 className="animate-spin mr-2" size={14} />Sending...</>}
+                    {status === 'success' && <><Check className="mr-2" size={14} />Message Sent!</>}
+                    {status === 'error' && <><AlertCircle className="mr-2" size={14} />Error — Retry</>}
+                    {status === 'idle' && <><Send className="mr-2" size={14} />{'> send_message'}</>}
                   </Button>
 
                   <p className="font-mono text-[10px] text-muted-foreground text-center pt-1 opacity-50">
@@ -186,8 +202,8 @@ const ContactSection = () => {
 
                 {/* Bottom VS Code bar */}
                 <div
-                  className="flex items-center justify-between px-5 py-2 border-t border-white/[0.05]"
-                  style={{ background: 'rgba(0,0,0,0.2)' }}
+                  className="relative z-10 flex items-center justify-between px-5 py-2 border-t border-white/[0.05]"
+                  style={{ background: 'rgba(0,0,0,0.25)' }}
                 >
                   <span className="font-mono text-[10px] text-muted-foreground opacity-40">bash · UTF-8</span>
                   <span className="font-mono text-[10px] text-syntax-green opacity-60">● connected</span>
@@ -205,8 +221,6 @@ const ContactSection = () => {
               <div className="w-[520px] h-[520px]">
                 <EarthCanvas />
               </div>
-
-              {/* Info cards below globe */}
               <div className="flex items-center gap-6 mt-2">
                 <div
                   className="flex items-center gap-2 px-4 py-2 rounded-xl border border-white/[0.06]"
