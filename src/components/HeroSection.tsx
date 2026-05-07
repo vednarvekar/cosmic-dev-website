@@ -7,38 +7,42 @@ const HeroSection = () => {
   const [currentLine, setCurrentLine] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
 
-const lines = [
-  { prefix: '~$', text: ' whoami', delay: 100 },
-  { prefix: '>', text: ' Software Engineer', delay: 80, isOutput: true },
+  const lines = [
+    { prefix: '~$', text: ' whoami', delay: 100 },
+    { prefix: '>', text: ' Ved Narvekar — Backend & AI Engineer', delay: 60, isOutput: true },
 
-  // { prefix: '~$', text: ' pwd', delay: 100 },
-  // { prefix: '   >', text: ' /home/ved/building', delay: 60, isOutput: true },
+    { prefix: '~$', text: ' cat skills.core', delay: 100 },
+    {
+      prefix: '>',
+      text: ' Node.js | Go | TypeScript | Python | Fastify | PostgreSQL | Redis | Kafka',
+      delay: 35,
+      isOutput: true
+    },
 
-  { prefix: '~$', text: ' cat skills.core', delay: 100 },
-  { 
-    prefix: '  >', 
-    text: ' Node.js | Express | PostgreSQL | Next.js | TypeScript | Python | AI/ML | C++ ', 
-    delay: 50, 
-    isOutput: true 
-  },
+    { prefix: '~$', text: ' cat skills.ai', delay: 100 },
+    {
+      prefix: '>',
+      text: ' RAG Pipelines | LLM Agents | Vector DBs | PyTorch | LLM Evals | Embeddings',
+      delay: 35,
+      isOutput: true
+    },
 
-  // { prefix: '~$', text: ' cat skills', delay: 100 },
-  // { 
-  //   prefix: '>', 
-  //   text: ' Data Structures | OOP | C++ | System Design | AI/ML | Python', 
-  //   delay: 50, 
-  //   isOutput: true 
-  // },
+    { prefix: '~$', text: ' cat skills.infra', delay: 100 },
+    {
+      prefix: '>',
+      text: ' Docker | Kubernetes | GitHub Actions | Nginx | OpenTelemetry | Langfuse',
+      delay: 35,
+      isOutput: true
+    },
 
-  { prefix: '~$', text: ' cat README.md', delay: 100 },
-  { 
-    prefix: '>', 
-    text: ' echo "Welcome to my portfolio. Scroll to explore."', 
-    delay: 60, 
-    isOutput: true 
-  },
-];
-
+    { prefix: '~$', text: ' cat README.md', delay: 100 },
+    {
+      prefix: '>',
+      text: ' Building backend systems & ML Models.',
+      delay: 60,
+      isOutput: true
+    },
+  ];
 
   useEffect(() => {
     if (currentLine >= lines.length) return;
@@ -55,7 +59,7 @@ const lines = [
         setTimeout(() => {
           setCurrentLine(currentLine + 1);
           setDisplayedText('');
-        }, 800);
+        }, 600);
       }
     }, line.delay);
 
@@ -70,45 +74,112 @@ const lines = [
   }, []);
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative">
-      <div className="container mx-auto px-6 py-20">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+
+      {/* Background grid */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }}
+      />
+
+      {/* Radial glow top-left */}
+      <div
+        className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full opacity-[0.06] pointer-events-none"
+        style={{ background: 'radial-gradient(circle, #00ff88 0%, transparent 70%)' }}
+      />
+
+      {/* Radial glow bottom-right */}
+      <div
+        className="absolute -bottom-32 -right-32 w-[400px] h-[400px] rounded-full opacity-[0.05] pointer-events-none"
+        style={{ background: 'radial-gradient(circle, #7c6aff 0%, transparent 70%)' }}
+      />
+
+      <div className="container mx-auto px-6 py-20 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto"
         >
-          {/* Terminal Window */}
-          <div className="terminal-window">
-            <div className="terminal-header">
-              <span className="terminal-dot terminal-dot-red" />
-              <span className="terminal-dot terminal-dot-yellow" />
-              <span className="terminal-dot terminal-dot-green" />
-              <span className="ml-4 text-sm text-muted-foreground font-mono">terminal — bash</span>
+          {/* Name + title above terminal */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="mb-6 text-center"
+          >
+            <p className="font-mono text-xs text-muted-foreground mb-1 tracking-[0.2em] uppercase opacity-60">
+              // initializing profile
+            </p>
+            {/* <h1 className="font-mono text-4xl md:text-5xl font-bold text-foreground mb-2 tracking-tight">
+              <span className="text-syntax-green">ved</span>
+              <span className="text-muted-foreground">@</span>
+              <span className="text-syntax-cyan">narvekar</span>
+            </h1> */}
+            <div className="flex items-center justify-center gap-2 mt-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-syntax-green animate-pulse shadow-[0_0_8px_rgba(0,255,128,0.8)]" />
+              <p className="font-mono text-sm text-muted-foreground">
+                Backend Engineer · AI Systems · Open Source
+              </p>
             </div>
-            
-            <div className="p-6 font-mono text-sm md:text-base space-y-2 min-h-[300px]">
+          </motion.div>
+
+          {/* Terminal Window */}
+          <div
+            className="relative rounded-xl overflow-hidden border border-white/[0.07]"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.3) 100%)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              boxShadow: '0 0 0 1px rgba(255,255,255,0.04), 0 32px 64px rgba(0,0,0,0.4)',
+            }}
+          >
+            {/* Top shimmer */}
+            <div className="absolute top-0 left-12 right-12 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+            {/* Terminal header */}
+            <div
+              className="flex items-center gap-2 px-4 py-3 border-b border-white/[0.05]"
+              style={{ background: 'rgba(0,0,0,0.2)' }}
+            >
+              <span className="w-3 h-3 rounded-full bg-red-500/70 hover:bg-red-500 transition-colors cursor-pointer" />
+              <span className="w-3 h-3 rounded-full bg-yellow-500/70 hover:bg-yellow-500 transition-colors cursor-pointer" />
+              <span className="w-3 h-3 rounded-full bg-green-500/70 hover:bg-green-500 transition-colors cursor-pointer" />
+              <div className="flex-1 flex justify-center">
+                <span className="font-mono text-xs text-muted-foreground opacity-50 bg-white/5 px-3 py-0.5 rounded-md border border-white/5">
+                  ved@portfolio: ~
+                </span>
+              </div>
+              <span className="font-mono text-xs text-muted-foreground opacity-30">bash</span>
+            </div>
+
+            {/* Terminal body */}
+            <div className="p-6 font-mono text-sm md:text-base space-y-1.5 min-h-[320px]">
               {lines.slice(0, currentLine).map((line, index) => (
-                <div key={index} className={`flex items-start ${line.isOutput ? 'pl-6' : ''}`}>
-                  <span className={line.isOutput ? 'text-syntax-cyan' : 'text-syntax-green'}>
+                <div key={index} className={`flex items-start gap-1 ${line.isOutput ? 'pl-4' : ''}`}>
+                  <span className={`shrink-0 ${line.isOutput ? 'text-syntax-cyan opacity-60' : 'text-syntax-green'}`}>
                     {line.prefix}
                   </span>
-                  <span className={line.isOutput ? 'text-foreground' : 'text-foreground'}>
+                  <span className={`${line.isOutput ? 'text-foreground/80' : 'text-foreground'} break-all`}>
                     {line.text}
                   </span>
                 </div>
               ))}
-              
+
               {currentLine < lines.length && (
-                <div className="flex items-start">
-                  <span className={lines[currentLine].isOutput ? 'text-syntax-cyan' : 'text-syntax-green'}>
+                <div className="flex items-start gap-1">
+                  <span className={`shrink-0 ${lines[currentLine].isOutput ? 'text-syntax-cyan opacity-60' : 'text-syntax-green'}`}>
                     {lines[currentLine].prefix}
                   </span>
-                  <span className="text-foreground">
+                  <span className="text-foreground break-all">
                     {displayedText}
                   </span>
-                  <span 
-                    className={`w-2 h-5 bg-terminal-green ml-0.5 ${showCursor ? 'opacity-100' : 'opacity-0'}`} 
+                  <span
+                    className={`w-[9px] h-[1.1em] bg-syntax-green ml-0.5 mt-0.5 rounded-[1px] transition-opacity ${showCursor ? 'opacity-100' : 'opacity-0'}`}
+                    style={{ boxShadow: '0 0 8px rgba(0,255,128,0.6)' }}
                   />
                 </div>
               )}
@@ -117,29 +188,51 @@ const lines = [
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="mt-8 pt-4 border-t border-terminal-border"
+                  transition={{ duration: 0.5 }}
+                  className="mt-6 pt-4"
+                  style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}
                 >
-                  <p className="text-syntax-comment"># Building the future, one commit at a time</p>
-                  <p className="text-syntax-comment"># Scroll down to explore my work</p>
+                  {/* <p className="text-syntax-comment opacity-70">
+                    # 2nd year BTech AIML · Mumbai · Available for remote contracts
+                  </p> */}
+                  <p className="text-syntax-comment opacity-70">
+                    {/* # Building AI agents that ship real code. Scroll to see the work ↓ */}
+                    # Scroll to explore ↓
+                  </p>
+                  <motion.div
+                    className="flex items-center gap-2 mt-3"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    {/* <span className="w-1.5 h-1.5 rounded-full bg-syntax-green animate-pulse shadow-[0_0_6px_rgba(0,255,128,0.8)]" /> */}
+                    {/* <span className="font-mono text-xs text-syntax-green opacity-80">ready for hire</span> */}
+                  </motion.div>
                 </motion.div>
               )}
             </div>
           </div>
 
-          {/* Scroll Indicator */}
+          {/* Scroll indicator */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 5 }}
-            className="flex justify-center mt-12"
+            className="flex justify-center mt-10"
           >
-            <a href="#about" className="flex flex-col items-center text-muted-foreground hover:text-syntax-green transition-colors">
-              <span className="font-mono text-xs mb-2">scroll.down()</span>
+            <a
+              href="#about"
+              className="flex flex-col items-center text-muted-foreground hover:text-syntax-green transition-colors duration-200 group"
+            >
+              <span className="font-mono text-xs mb-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                scroll.down()
+              </span>
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ repeat: Infinity, duration: 1.5 }}
+                className="opacity-50 group-hover:opacity-100 transition-opacity"
               >
-                <ChevronDown size={24} />
+                <ChevronDown size={20} />
               </motion.div>
             </a>
           </motion.div>
