@@ -14,7 +14,7 @@ const HeroSection = () => {
     { prefix: '~$', text: ' cat skills.core', delay: 100 },
     {
       prefix: '>',
-      text: ' Node.js | Go | TypeScript | Python | Fastify | PostgreSQL | Redis | Kafka',
+      text: ' Node.js | Go | TypeScript | Python | PostgreSQL | Redis | Kafka',
       delay: 35,
       isOutput: true
     },
@@ -22,7 +22,7 @@ const HeroSection = () => {
     { prefix: '~$', text: ' cat skills.ai', delay: 100 },
     {
       prefix: '>',
-      text: ' RAG Pipelines | LLM Agents | Vector DBs | PyTorch | LLM Evals | Embeddings',
+      text: ' RAG Pipelines | Vector DBs | PyTorch | LLM Evals | Embeddings',
       delay: 35,
       isOutput: true
     },
@@ -30,7 +30,7 @@ const HeroSection = () => {
     { prefix: '~$', text: ' cat skills.infra', delay: 100 },
     {
       prefix: '>',
-      text: ' Docker | Kubernetes | GitHub Actions | Nginx | OpenTelemetry | Langfuse',
+      text: ' Docker | Kubernetes | Nginx | OpenTelemetry | Langfuse',
       delay: 35,
       isOutput: true
     },
@@ -114,11 +114,6 @@ const HeroSection = () => {
             <p className="font-mono text-xs text-muted-foreground mb-1 tracking-[0.2em] uppercase opacity-60">
               // initializing profile
             </p>
-            {/* <h1 className="font-mono text-4xl md:text-5xl font-bold text-foreground mb-2 tracking-tight">
-              <span className="text-syntax-green">ved</span>
-              <span className="text-muted-foreground">@</span>
-              <span className="text-syntax-cyan">narvekar</span>
-            </h1> */}
             <div className="flex items-center justify-center gap-2 mt-2">
               <span className="w-1.5 h-1.5 rounded-full bg-syntax-green animate-pulse shadow-[0_0_8px_rgba(0,255,128,0.8)]" />
               <p className="font-mono text-sm text-muted-foreground">
@@ -163,7 +158,7 @@ const HeroSection = () => {
                   <span className={`shrink-0 ${line.isOutput ? 'text-syntax-cyan opacity-60' : 'text-syntax-green'}`}>
                     {line.prefix}
                   </span>
-                  <span className={`${line.isOutput ? 'text-foreground/80' : 'text-foreground'} break-all`}>
+                  <span className={`${line.isOutput ? 'text-foreground/80' : 'text-foreground'} break-words whitespace-pre-wrap`}>
                     {line.text}
                   </span>
                 </div>
@@ -174,7 +169,7 @@ const HeroSection = () => {
                   <span className={`shrink-0 ${lines[currentLine].isOutput ? 'text-syntax-cyan opacity-60' : 'text-syntax-green'}`}>
                     {lines[currentLine].prefix}
                   </span>
-                  <span className="text-foreground break-all">
+                  <span className="text-foreground break-words whitespace-pre-wrap">
                     {displayedText}
                   </span>
                   <span
@@ -192,11 +187,7 @@ const HeroSection = () => {
                   className="mt-6 pt-4"
                   style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}
                 >
-                  {/* <p className="text-syntax-comment opacity-70">
-                    # 2nd year BTech AIML · Mumbai · Available for remote contracts
-                  </p> */}
                   <p className="text-syntax-comment opacity-70">
-                    {/* # Building AI agents that ship real code. Scroll to see the work ↓ */}
                     # Scroll to explore ↓
                   </p>
                   <motion.div
@@ -205,8 +196,6 @@ const HeroSection = () => {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.4 }}
                   >
-                    {/* <span className="w-1.5 h-1.5 rounded-full bg-syntax-green animate-pulse shadow-[0_0_6px_rgba(0,255,128,0.8)]" /> */}
-                    {/* <span className="font-mono text-xs text-syntax-green opacity-80">ready for hire</span> */}
                   </motion.div>
                 </motion.div>
               )}
