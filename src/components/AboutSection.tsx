@@ -155,7 +155,8 @@ const AboutSection = () => {
                 </div>
                 <div className="flex items-center gap-1.5 shrink-0">
                   <span className="w-1.5 h-1.5 rounded-full bg-syntax-green animate-pulse shadow-[0_0_6px_rgba(0,255,128,0.8)]" />
-                  <span className="font-mono text-[10px] text-syntax-green opacity-70 hidden sm:inline">open to work</span>
+                  <span className="font-mono text-[10px] text-syntax-green opacity-70 hidden sm:inline">TS</span>
+                  {/* <span className="font-mono text-[10px] text-syntax-green opacity-70 hidden sm:inline">open to work</span> */}
                 </div>
               </div>
 

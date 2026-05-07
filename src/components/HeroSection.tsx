@@ -77,19 +77,19 @@ const HeroSection = () => {
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
 
       {/* Background grid */}
-      <div
+      {/* <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: 'linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)',
           backgroundSize: '40px 40px',
         }}
-      />
+      /> */}
 
       {/* Radial glow top-left */}
-      <div
+      {/* <div
         className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full opacity-[0.06] pointer-events-none"
         style={{ background: 'radial-gradient(circle, #00ff88 0%, transparent 70%)' }}
-      />
+      /> */}
 
       {/* Radial glow bottom-right */}
       <div
@@ -111,9 +111,9 @@ const HeroSection = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="mb-6 text-center"
           >
-            <p className="font-mono text-xs text-muted-foreground mb-1 tracking-[0.2em] uppercase opacity-60">
+            {/* <p className="font-mono text-xs text-muted-foreground mb-1 tracking-[0.2em] uppercase opacity-60">
               // initializing profile
-            </p>
+            </p> */}
             <div className="flex items-center justify-center gap-2 mt-2">
               <span className="w-1.5 h-1.5 rounded-full bg-syntax-green animate-pulse shadow-[0_0_8px_rgba(0,255,128,0.8)]" />
               <p className="font-mono text-sm text-muted-foreground">
@@ -154,7 +154,7 @@ const HeroSection = () => {
             {/* Terminal body */}
             <div className="p-6 font-mono text-sm md:text-base space-y-1.5 min-h-[320px]">
               {lines.slice(0, currentLine).map((line, index) => (
-                <div key={index} className={`flex items-start gap-1 ${line.isOutput ? 'pl-4' : ''}`}>
+                <div key={index} className={`flex items-start  ${line.isOutput ? 'pl-4' : ''}`}>
                   <span className={`shrink-0 ${line.isOutput ? 'text-syntax-cyan opacity-60' : 'text-syntax-green'}`}>
                     {line.prefix}
                   </span>
@@ -179,7 +179,7 @@ const HeroSection = () => {
                 </div>
               )}
 
-              {currentLine >= lines.length && (
+              {/* {currentLine >= lines.length && (
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -198,7 +198,7 @@ const HeroSection = () => {
                   >
                   </motion.div>
                 </motion.div>
-              )}
+              )} */}
             </div>
           </div>
 
@@ -207,11 +207,11 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 5 }}
-            className="flex justify-center mt-10"
+            className="flex justify-center mt-6"
           >
             <a
               href="#about"
-              className="flex flex-col items-center text-muted-foreground hover:text-syntax-green transition-colors duration-200 group"
+              className="flex flex-col items-center text-muted-foreground hover:text-syntax-green transition-colors duration-200 group text-white"
             >
               <span className="font-mono text-xs mb-2 opacity-50 group-hover:opacity-100 transition-opacity">
                 scroll.down()
