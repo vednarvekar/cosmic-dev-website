@@ -75,14 +75,6 @@ const technologies: TechSection[] = [
       { name: 'OpenTelemetry', version: 'Latest', icon: '🔭', description: 'Observability', color: 'from-violet-500 to-purple-600' },
     ],
   },
-  // {
-  //   category: 'Tools',
-  //   items: [
-  //     { name: 'Git', version: '^2.x', icon: '🌱', description: 'Version Control', color: 'from-orange-500 to-red-500' },
-  //     { name: 'GitHub', version: 'Cloud', icon: '🐙', description: 'Code Hosting', color: 'from-neutral-700 to-neutral-900' },
-  //     { name: 'Postman', version: '^12.x', icon: '📮', description: 'API Testing', color: 'from-orange-400 to-orange-600' },
-  //   ],
-  // },
 ]
 
 const TechStackSection = () => {
