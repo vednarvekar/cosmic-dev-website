@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Windows download markers (names contain ":" and break checkout on Windows)
+*:Zone.Identifier
