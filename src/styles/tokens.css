@@ -26,27 +26,19 @@ html:has(.vp) { scroll-behavior: smooth; background: #f3f1ea; }
   html:has(.vp) { scroll-behavior: auto; }
 }
 
-/* scrollbars: F1 chequered-flag thumb on a paper track, lime on hover.
+/* scrollbars: slim ink thumb on the paper track, lime on hover. Keep them plain:
+   patterns (chequers, stripes) turn to noise at this width.
    Chromium/Safari use ::-webkit-scrollbar; Firefox gets plain scrollbar-color
    (setting scrollbar-color in Chromium would disable the custom shape). */
 html::-webkit-scrollbar { width: 12px; }
-html::-webkit-scrollbar-track { background: #f3f1ea; box-shadow: inset 1px 0 0 #dcd8cb; }
-html::-webkit-scrollbar-thumb {
-  min-height: 56px; border: 2px solid #f3f1ea; border-radius: 4px;
-  background: repeating-conic-gradient(#17180f 0 25%, #f3f1ea 0 50%) 0 0 / 8px 8px;
-  box-shadow: inset 0 0 0 1.5px #17180f;
-}
-html::-webkit-scrollbar-thumb:hover { background: #d4ff3a; }
-html::-webkit-scrollbar-thumb:active { background: repeating-conic-gradient(#17180f 0 25%, #d4ff3a 0 50%) 0 0 / 8px 8px; }
-.vp-shelf::-webkit-scrollbar { height: 10px; }
-.vp-drawer::-webkit-scrollbar { width: 10px; }
+html::-webkit-scrollbar-track { background: #f3f1ea; }
+html::-webkit-scrollbar-thumb { min-height: 56px; background: #17180f; border: 3px solid #f3f1ea; border-radius: 999px; }
+html::-webkit-scrollbar-thumb:hover { background: #d4ff3a; box-shadow: inset 0 0 0 1.5px #17180f; }
+.vp-shelf::-webkit-scrollbar { height: 8px; }
+.vp-drawer::-webkit-scrollbar { width: 8px; }
 .vp-shelf::-webkit-scrollbar-track, .vp-drawer::-webkit-scrollbar-track { background: transparent; }
-.vp-shelf::-webkit-scrollbar-thumb, .vp-drawer::-webkit-scrollbar-thumb {
-  border: 2px solid #f3f1ea; border-radius: 4px;
-  background: repeating-conic-gradient(#17180f 0 25%, #f3f1ea 0 50%) 0 0 / 6px 6px;
-  box-shadow: inset 0 0 0 1px #17180f;
-}
-.vp-shelf::-webkit-scrollbar-thumb:hover, .vp-drawer::-webkit-scrollbar-thumb:hover { background: #d4ff3a; }
+.vp-shelf::-webkit-scrollbar-thumb, .vp-drawer::-webkit-scrollbar-thumb { background: #17180f; border: 2px solid #f3f1ea; border-radius: 999px; }
+.vp-shelf::-webkit-scrollbar-thumb:hover, .vp-drawer::-webkit-scrollbar-thumb:hover { background: #d4ff3a; box-shadow: inset 0 0 0 1px #17180f; }
 @supports (-moz-appearance: none) {
   html { scrollbar-color: #17180f #f3f1ea; scrollbar-width: thin; }
   .vp-shelf, .vp-drawer { scrollbar-color: #17180f transparent; scrollbar-width: thin; }
