@@ -6,13 +6,13 @@ const LINES = [
   '> loading backend modules ✓',
   '> warming up the GPUs ✓',
   '> brewing coffee ✓',
+  '> ready.',
 ];
 
 const KEY = 'ved-booted';
-const LINE_MS = 320;
-const TITLE_MS = 1100; // how long "entering Ved's universe" holds before the reveal
-
-type Phase = 'boot' | 'enter' | 'done';
+const START_MS = 700; // let the title land before the log starts
+const LINE_MS = 520;
+const HOLD_MS = 700; // pause on "ready." before the reveal
 
 function alreadyBooted() {
   try {
@@ -22,11 +22,12 @@ function alreadyBooted() {
   }
 }
 
-/** Auto-playing intro: boot log -> "entering Ved's universe" -> iris reveal of the desk. Any click or key skips it. */
+/** One-screen intro: "entering Ved's universe" with the boot log typing beneath it, then an iris reveal. Any click or key skips it. */
 export default function BootGate() {
   const reduce = useReducedMotion();
-  const [phase, setPhase] = useState<Phase>(() => (alreadyBooted() ? 'done' : 'boot'));
+  const [open, setOpen] = useState(() => !alreadyBooted());
   const [shown, setShown] = useState(0);
+  const total = LINES.length;
 
   const finish = () => {
     try {
@@ -34,30 +35,23 @@ export default function BootGate() {
     } catch {
       /* private mode: intro just plays again next visit */
     }
-    setPhase('done');
+    setOpen(false);
   };
 
-  // type the boot log, then switch to the title
+  // type the log, hold on "ready.", then reveal
   useEffect(() => {
-    if (phase !== 'boot') return;
-    if (shown < LINES.length) {
-      const t = setTimeout(() => setShown((n) => n + 1), reduce ? 60 : LINE_MS);
-      return () => clearTimeout(t);
-    }
-    const t = setTimeout(() => setPhase('enter'), 250);
+    if (!open) return;
+    const step = reduce ? 80 : LINE_MS;
+    const t =
+      shown < total
+        ? setTimeout(() => setShown((n) => n + 1), shown === 0 && !reduce ? START_MS : step)
+        : setTimeout(finish, reduce ? 200 : HOLD_MS);
     return () => clearTimeout(t);
-  }, [phase, shown, reduce]);
+  }, [open, shown, total, reduce]);
 
-  // hold the title, then reveal the site
+  // lock scroll while playing; any key skips
   useEffect(() => {
-    if (phase !== 'enter') return;
-    const t = setTimeout(finish, reduce ? 400 : TITLE_MS);
-    return () => clearTimeout(t);
-  }, [phase, reduce]);
-
-  // lock scroll while playing; any key or click skips
-  useEffect(() => {
-    if (phase === 'done') return;
+    if (!open) return;
     document.body.style.overflow = 'hidden';
     const skip = () => finish();
     window.addEventListener('keydown', skip);
@@ -65,11 +59,13 @@ export default function BootGate() {
       window.removeEventListener('keydown', skip);
       document.body.style.overflow = '';
     };
-  }, [phase]);
+  }, [open]);
+
+  const pct = Math.round((shown / total) * 100);
 
   return (
     <AnimatePresence>
-      {phase !== 'done' && (
+      {open && (
         <motion.div
           className="vp-gate"
           onClick={finish}
@@ -77,33 +73,33 @@ export default function BootGate() {
           exit={{ clipPath: 'circle(0% at 50% 50%)' }}
           transition={{ duration: reduce ? 0.2 : 0.9, ease: [0.8, 0, 0.2, 1] }}
         >
-          <AnimatePresence mode="wait">
-            {phase === 'boot' ? (
-              <motion.pre
-                key="boot"
-                className="vp-boot"
-                exit={{ opacity: 0, y: -12, filter: 'blur(6px)' }}
-                transition={{ duration: 0.25 }}
-              >
-                {LINES.slice(0, shown).join('\n')}
-                <span className="vp-caret">▍</span>
-              </motion.pre>
-            ) : (
-              <motion.div
-                key="enter"
-                className="vp-enter"
-                initial={{ opacity: 0, scale: 0.92, letterSpacing: '0.4em' }}
-                animate={{ opacity: 1, scale: 1, letterSpacing: '-0.02em' }}
-                exit={{ opacity: 0, scale: 1.6 }}
-                transition={{ duration: 0.7, ease: [0.2, 0.8, 0.2, 1] }}
-              >
-                <span>entering</span>
-                <strong>
-                  Ved's <em>universe</em>
-                </strong>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <motion.div
+            className="vp-intro"
+            exit={{ scale: 1.25, opacity: 0 }}
+            transition={{ duration: 0.6, ease: [0.7, 0, 0.2, 1] }}
+          >
+            <motion.div
+              className="vp-enter"
+              initial={{ opacity: 0, scale: 0.92, letterSpacing: '0.35em' }}
+              animate={{ opacity: 1, scale: 1, letterSpacing: '-0.02em' }}
+              transition={{ duration: reduce ? 0 : 0.9, ease: [0.2, 0.8, 0.2, 1] }}
+            >
+              <span>entering</span>
+              <strong>
+                Ved's <em>universe</em>
+              </strong>
+            </motion.div>
+
+            <pre className="vp-boot" aria-live="polite">
+              {LINES.slice(0, shown).join('\n')}
+              {shown < total && <span className="vp-caret">▍</span>}
+            </pre>
+
+            <div className="vp-progress" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100}>
+              <motion.i animate={{ width: `${pct}%` }} transition={{ duration: 0.4, ease: 'easeOut' }} />
+              <b>{String(pct).padStart(3, '0')}%</b>
+            </div>
+          </motion.div>
           <span className="vp-gate-skip">click or press any key to skip</span>
         </motion.div>
       )}
