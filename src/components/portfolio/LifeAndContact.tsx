@@ -36,7 +36,7 @@ export function Life() {
         {/* TODO(ved): add a line about hobbies and what you're learning */}
         <div className="vp-facts">
           <span>☕ runs on coffee</span>
-          <span>📈 trades on the side</span>
+          <span>🏍️ rides bikes</span>
           <span>🎧 lo-fi while coding</span>
           <span>🇮🇳 India</span>
         </div>
