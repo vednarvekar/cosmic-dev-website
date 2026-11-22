@@ -12,21 +12,26 @@ export type CareerEntry = {
   current?: boolean;
   points: { lead: string; rest: string }[]; // lead is highlighted
   tags?: string[];
+  hidden?: boolean; // keep the entry but leave it off the site
 };
 
 export const career: CareerEntry[] = [
   {
     hash: 'a7f3c21',
     type: 'feat',
-    scope: 'jdas',
+    scope: 'jibe',
     title: 'AI Automation & Business Applications Engineer',
-    org: 'JDAS',
+    org: 'Jibe Development Services',
     when: 'Sep 2026 – Present',
     current: true,
     points: [
       {
         lead: 'Built Code-Shield',
         rest: ', a platform that analyses company codebases and pull requests. An Azure DevOps job runs Trivy, Gitleaks and Semgrep, then sends findings to AWS Bedrock for AI analysis.',
+      },
+      {
+        lead: 'Built an in-house payroll application',
+        rest: ' for the company, in the spirit of Zoho Payroll.', // TODO(ved): add stack and scale (employees, runs per month)
       },
       {
         lead: 'Built a Microsoft Teams agent',
@@ -48,7 +53,7 @@ export const career: CareerEntry[] = [
     type: 'edu',
     scope: 'ucoe',
     title: 'B.E. Artificial Intelligence & Machine Learning',
-    org: 'Universal College of Engineering · Mumbai University',
+    org: 'Mumbai University',
     when: 'Expected Apr 2028',
     where: 'Mumbai',
     points: [{ lead: 'Head', rest: ', Discipline & Anti-Ragging Committee.' }],
@@ -57,6 +62,7 @@ export const career: CareerEntry[] = [
     hash: '0c4d8e2',
     type: 'docs',
     scope: 'certs',
+    hidden: true, // Ved: plain Udemy certs, hidden for now
     title: 'Certifications',
     org: 'Online',
     when: 'ongoing',

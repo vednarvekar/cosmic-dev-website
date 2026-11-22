@@ -51,6 +51,7 @@ describe('pages', () => {
     expect(career[0].current).toBe(true);
     expect(screen.getByRole('heading', { level: 3, name: new RegExp(career[0].title) })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /download resume/i })).toHaveAttribute('href', '/resume.pdf');
+    for (const c of career.filter((e) => e.hidden)) expect(screen.queryByText(c.title)).toBeNull();
   });
 
   it('404 is noindex and echoes the missing path', () => {

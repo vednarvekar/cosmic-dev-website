@@ -33,7 +33,7 @@ export default function Experience() {
             <b>~$</b> git log --career
           </p>
           <ol className="vp-commits">
-            {career.map((c) => (
+            {career.filter((c) => !c.hidden).map((c) => (
               <li key={c.hash} className={`vp-commit vp-commit-${c.type}`}>
                 <span className="vp-node" aria-hidden />
                 <p className="vp-commit-meta">

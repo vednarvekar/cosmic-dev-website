@@ -9,13 +9,13 @@ export const site = {
   description:
     'Ved Narvekar is a DevOps & AI engineer in Mumbai building AI automation on AWS and Azure DevOps, on-device AI and ML tools. See his work and career.',
   location: 'Mumbai, India',
-  company: 'JDAS',
+  company: 'Jibe Development Services',
   jobTitle: 'AI Automation & Business Applications Engineer',
 };
 
 export const links = {
   github: 'https://github.com/vednarvekar',
-  linkedin: 'https://www.linkedin.com/in/ved-narvekar/',
+  linkedin: 'https://www.linkedin.com/in/vednarvekar/',
   x: 'https://x.com/VedNarvekar',
   resume: '/resume.pdf',
   email: '', // TODO(ved): add your email to show an email link

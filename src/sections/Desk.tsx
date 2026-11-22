@@ -118,7 +118,7 @@ export default function Desk() {
       </DeskObject>
 
       <DeskObject deskRef={deskRef} delay={0.3} className="vp-sticky" rotate={5} style={{ left: 'min(72%, calc(100% - 160px))', top: '14%', background: 'var(--vp-yellow)' }}>
-        <small>status</small>shipping AI automation @ JDAS ✦
+        <small>status</small>shipping AI automation @ Jibe ✦
       </DeskObject>
 
       <DeskObject deskRef={deskRef} delay={0.4} hideOnMobile className="vp-sticky" rotate={-4} style={{ left: '76%', top: '58%', background: 'var(--vp-pink)' }}>
