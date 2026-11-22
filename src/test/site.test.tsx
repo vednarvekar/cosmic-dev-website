@@ -30,7 +30,6 @@ describe('content', () => {
 
 describe('pages', () => {
   it('home has exactly one h1 with Ved’s name and is indexable', () => {
-    sessionStorage.setItem('ved-booted', '1');
     render(<Home />);
     const h1s = screen.getAllByRole('heading', { level: 1 });
     expect(h1s).toHaveLength(1);
@@ -40,13 +39,11 @@ describe('pages', () => {
   });
 
   it('home lists every project on the shelf', () => {
-    sessionStorage.setItem('ved-booted', '1');
     render(<Home />);
     for (const p of projects) expect(screen.getByText(`${p.name} ↗`)).toBeInTheDocument();
   });
 
   it('home shows the career log with the current role first', () => {
-    sessionStorage.setItem('ved-booted', '1');
     render(<Home />);
     expect(career[0].current).toBe(true);
     expect(screen.getByRole('heading', { level: 3, name: new RegExp(career[0].title) })).toBeInTheDocument();

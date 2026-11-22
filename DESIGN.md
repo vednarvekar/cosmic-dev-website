@@ -115,7 +115,7 @@ Use Framer Motion (already installed) for entrances and state changes, and CSS f
 - **Hovers:** 0.15–0.35s CSS transitions; a playful overshoot `cubic-bezier(.3, 1.6, .5, 1)` is fine for lifts.
 - **Dragging:** desk objects use the custom pointer drag in `Desk.tsx`, which moves `left`/`top` and clamps to the desk. Do **not** use Framer's `drag` with `dragConstraints={ref}`: it shifts objects on window resize.
 - **Reduced motion:** every new animation must degrade under `prefers-reduced-motion` (the global block in `tokens.css` kills CSS animations; use `useReducedMotion()` for JS timing, as `Intro` does).
-- **The intro** plays once per browser session (`sessionStorage` key `ved-booted`), is skippable with any click or key, and lasts about 4 seconds. Keep it under about 5 seconds if you add lines.
+- **The intro** plays on every page load (reloads included), is skippable with any click or key, and lasts about 4 seconds. Keep it under about 5 seconds if you add lines.
 - One showpiece motion per section is enough. Don't stack effects.
 
 ## 5. Voice and copy

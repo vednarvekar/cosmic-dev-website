@@ -9,32 +9,18 @@ const LINES = [
   '> ready.',
 ];
 
-const KEY = 'ved-booted';
 const START_MS = 700; // let the title land before the log starts
 const LINE_MS = 520;
 const HOLD_MS = 700; // pause on "ready." before the reveal
 
-function alreadyBooted() {
-  try {
-    return sessionStorage.getItem(KEY) === '1';
-  } catch {
-    return false;
-  }
-}
-
 /** One-screen intro: "entering Ved's universe" with the boot log typing beneath it, then an iris reveal. Any click or key skips it. */
 export default function Intro() {
   const reduce = useReducedMotion();
-  const [open, setOpen] = useState(() => !alreadyBooted());
+  const [open, setOpen] = useState(true);
   const [shown, setShown] = useState(0);
   const total = LINES.length;
 
   const finish = () => {
-    try {
-      sessionStorage.setItem(KEY, '1');
-    } catch {
-      /* private mode: intro just plays again next visit */
-    }
     setOpen(false);
   };
 
