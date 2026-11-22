@@ -1,29 +1,22 @@
-import VideoBackground from '@/components/VideoBackground';
-import Navigation from '@/components/Navigation';
-import HeroSection from '@/components/HeroSection';
-import AboutSection from '@/components/AboutSection';
-import TechStackSection from '@/components/TechStackSection';
-import ProjectsSection from '@/components/ProjectsSection';
-import ContactSection from '@/components/ContactSection';
-import Footer from '@/components/Footer';
+import '@/styles/portfolio.css';
+import BootGate from '@/components/portfolio/BootGate';
+import Desk from '@/components/portfolio/Desk';
+import Manifesto from '@/components/portfolio/Manifesto';
+import DiskShelf from '@/components/portfolio/DiskShelf';
+import { Contact, Life, Nav } from '@/components/portfolio/LifeAndContact';
 
-const Index = () => {
-  return (
-    <div className="dark min-h-screen text-foreground relative">
-      <VideoBackground />
-      <Navigation />
-      
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <TechStackSection />
-        <ProjectsSection />
-        <ContactSection />
-      </main>
-      
-      <Footer />
-    </div>
-  );
-};
+const Index = () => (
+  <div className="vp">
+    <BootGate />
+    <Nav />
+    <main>
+      <Desk />
+      <Manifesto />
+      <DiskShelf />
+      <Life />
+      <Contact />
+    </main>
+  </div>
+);
 
 export default Index;
