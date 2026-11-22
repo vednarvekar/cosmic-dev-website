@@ -3,7 +3,7 @@ import { useMotionValueEvent, useScroll } from 'framer-motion';
 
 // Words wrapped in *asterisks* render as serif lime accents.
 const TEXT =
-  'I build the *quiet* machinery behind products: gateways that hold under load, queues that never drop a job, and *AI pipelines* that find the right answer and prove it.';
+  'I build the *quiet* machinery behind products: pipelines that onboard a client in one run, platforms that catch bad code before it merges, and *AI agents* that find the right answer and prove it.';
 
 const words = TEXT.match(/\*[^*]+\*|\S+/g) ?? [];
 

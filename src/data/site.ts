@@ -7,8 +7,10 @@ export const site = {
   title: "Ved's Universe · Ved Narvekar",
   role: 'DevOps & AI Engineer',
   description:
-    'Ved Narvekar is a DevOps & AI engineer from India: infrastructure, CI/CD, observability, RAG pipelines and LLM evals. See his projects and story.',
-  location: 'India',
+    'Ved Narvekar is a DevOps & AI engineer in Mumbai building AI automation on AWS and Azure DevOps, on-device AI and ML tools. See his work and career.',
+  location: 'Mumbai, India',
+  company: 'JDAS',
+  jobTitle: 'AI Automation & Business Applications Engineer',
 };
 
 export const links = {

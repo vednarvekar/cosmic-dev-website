@@ -30,6 +30,6 @@ src/
   test/         vitest + Testing Library
 ```
 
-To add a project, add an entry to `src/data/projects.ts`. To change links, bio details, F1 drivers or the ride log, edit `src/data/site.ts`. Search for `TODO(ved)` to find placeholders.
+To add a project, add an entry to `src/data/projects.ts`. To add a job, add an entry at the top of `src/data/experience.ts` (and update `public/resume.pdf`). To change links, bio details, F1 drivers or the ride log, edit `src/data/site.ts`. Search for `TODO(ved)` to find placeholders.
 
 Design rules (colours, type, components, motion, voice) are in [DESIGN.md](DESIGN.md).

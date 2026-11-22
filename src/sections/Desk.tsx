@@ -118,11 +118,11 @@ export default function Desk() {
       </DeskObject>
 
       <DeskObject deskRef={deskRef} delay={0.3} className="vp-sticky" rotate={5} style={{ left: 'min(72%, calc(100% - 160px))', top: '14%', background: 'var(--vp-yellow)' }}>
-        <small>status</small>open to devops &amp; AI roles ✦
+        <small>status</small>shipping AI automation @ JDAS ✦
       </DeskObject>
 
       <DeskObject deskRef={deskRef} delay={0.4} hideOnMobile className="vp-sticky" rotate={-4} style={{ left: '76%', top: '58%', background: 'var(--vp-pink)' }}>
-        <small>currently</small>teaching an agent to fix its own bugs
+        <small>side quest</small>building Jitmo, an AI that lives on my PC
       </DeskObject>
 
       <DeskObject deskRef={deskRef} delay={0.5} className="vp-term" rotate={2} style={{ left: '5%', top: '62%' }}>
@@ -133,7 +133,7 @@ export default function Desk() {
         </div>
         <pre>
           <b>~$</b> whoami{'\n'}devops &amp; ai engineer{'\n'}
-          <b>~$</b> cat stack.txt{'\n'}docker · k8s · nginx · ci/cd{'\n'}node · go · python · pytorch
+          <b>~$</b> cat stack.txt{'\n'}aws · azure devops · docker{'\n'}typescript · node · python · rust
         </pre>
       </DeskObject>
 

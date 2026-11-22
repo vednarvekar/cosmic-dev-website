@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { projects } from '@/data/projects';
 import { drivers, links } from '@/data/site';
+import { career } from '@/data/experience';
 import Home from '@/pages/Home';
 import NotFound from '@/pages/NotFound';
 import UnderDevelopment from '@/pages/UnderDevelopment';
@@ -42,6 +43,14 @@ describe('pages', () => {
     sessionStorage.setItem('ved-booted', '1');
     render(<Home />);
     for (const p of projects) expect(screen.getByText(`${p.name} ↗`)).toBeInTheDocument();
+  });
+
+  it('home shows the career log with the current role first', () => {
+    sessionStorage.setItem('ved-booted', '1');
+    render(<Home />);
+    expect(career[0].current).toBe(true);
+    expect(screen.getByRole('heading', { level: 3, name: new RegExp(career[0].title) })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /download resume/i })).toHaveAttribute('href', '/resume.pdf');
   });
 
   it('404 is noindex and echoes the missing path', () => {

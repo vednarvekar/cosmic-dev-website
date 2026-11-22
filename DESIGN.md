@@ -13,6 +13,7 @@ The site is **Ved's desk**, a physical workspace you can touch. Every section is
 | Hero | The desk: draggable polaroid, sticky notes, terminal, keycaps, mug, and the F1 start-lights game | `src/sections/Desk.tsx`, `src/components/StartLights.tsx` |
 | Manifesto | Olive band with a lime marquee and words that light up on scroll | `src/sections/Manifesto.tsx` |
 | Projects | A wooden shelf of **floppy disks**; clicking one slides in a drawer | `src/sections/Projects.tsx`, `src/components/ProjectDrawer.tsx` |
+| Career | A terminal running `git log --career`: each job, degree or cert is a commit (`feat`, `edu`, `docs`), newest first, current role tagged `(HEAD -> now)`, plus a Download resume button | `src/sections/Experience.tsx` |
 | About | "Off the terminal, I'm just Ved": polaroids and fact chips, then the "Sundays are for F1" pinboard (paddock pass, flip-able driver cards, ride log) | `src/sections/About.tsx` |
 | Contact | "Let's build something real" with a shop **receipt** ("TOTAL: the ultimate package") | `src/sections/Contact.tsx` |
 | Under development | The project's floppy disk mid-write, a sticky note, a WIP git log | `src/pages/UnderDevelopment.tsx` |
@@ -127,7 +128,8 @@ Use Framer Motion (already installed) for entrances and state changes, and CSS f
 ## 6. Content and data
 
 All editable content lives in `src/data/`:
-- `projects.ts`: projects (name, disk label, colour, tag, year, description, stack, impact, terminal preview, GitHub URL). Add a project by adding an object; the shelf, drawer and SEO text pick it up. Projects without `githubUrl` link to `/under-development?project=<name>`.
+- `experience.ts`: the career log (jobs, education, certifications), newest first. Keep it in sync with `public/resume.pdf`.
+- `projects.ts`: projects (name, disk label, colour, tag, year, description, stack, impact, terminal preview, GitHub URL). Add a project by adding an object; the shelf, drawer and SEO text pick it up. Every number in a project's impact line must be real (from the resume or the repo); never invent metrics or terminal output that reads as a result. Projects without `githubUrl` link to `/under-development?project=<name>`.
 - `site.ts`: site name, title and description (used for SEO), social links, the F1 driver cards, F1 details (team, fan since, favourite moment) and the ride log. Empty optional fields are simply hidden.
 
 Placeholders still to replace are marked `TODO(ved)` (photos, email, project impact numbers, F1 and ride details, card lines). Photos go in `public/` and replace the `.vp-ph` placeholder divs with `<img>` (keep `aspect-ratio: 1`, `object-fit: cover`, and a real `alt`).

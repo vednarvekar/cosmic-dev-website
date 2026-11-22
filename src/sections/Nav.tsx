@@ -4,6 +4,7 @@ export default function Nav() {
     <nav className="vp-nav" aria-label="Main">
       <a href="#home">Home</a>
       <a href="#work">Work</a>
+      <a href="#experience">Career</a>
       <a href="#about">About</a>
       <a className="vp-cta" href="#contact">
         Say hi

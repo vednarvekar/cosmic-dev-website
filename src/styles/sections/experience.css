@@ -1,0 +1,39 @@
+/* Career log: git log --career terminal */
+.vp-career { max-width: 1200px; margin: 0 auto; padding-block: 40px 100px; scroll-margin-top: 40px; }
+.vp-career .vp-head { max-width: none; }
+.vp-career .vp-head h2 em { font-family: var(--vp-serif); font-style: italic; color: inherit; font-size: 1em; background: var(--vp-lime); padding: 0 .12em; }
+.vp-career .vp-go { margin-top: 0; }
+
+.vp-log { background: var(--vp-ink); color: #c9ccb6; border-radius: 14px; overflow: hidden; box-shadow: 0 20px 50px #0003; font-family: var(--vp-mono); font-size: 13px; line-height: 1.65; rotate: -.4deg; }
+.vp-log .vp-tb { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #2b2c22; }
+.vp-log .vp-tb i { width: 10px; height: 10px; border-radius: 50%; background: #4a4c3c; }
+.vp-log .vp-tb span { margin-left: 10px; font-size: 11px; color: #7f826d; }
+.vp-log-body { padding: 22px clamp(16px, 4vw, 36px) 26px; }
+.vp-log b { color: var(--vp-lime); font-weight: 400; }
+.vp-log-cmd { margin-bottom: 18px; color: var(--vp-paper); }
+
+.vp-commits { list-style: none; padding: 0; margin: 0; display: grid; gap: 26px; }
+.vp-commit { position: relative; padding-left: 28px; }
+.vp-commit::before { content: ""; position: absolute; left: 5px; top: 14px; bottom: -30px; width: 2px; background: #3a3c2e; }
+.vp-commit:last-child::before { bottom: 0; }
+.vp-node { position: absolute; left: 0; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: var(--vp-ink); border: 2px solid var(--vp-lime); }
+.vp-commit-feat .vp-node { background: var(--vp-lime); box-shadow: 0 0 0 4px #d4ff3a22; }
+.vp-commit-meta { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12px; }
+.vp-hash { color: #e6c86e; }
+.vp-headref { color: var(--vp-lime); }
+.vp-when { color: #7f826d; margin-left: auto; }
+.vp-commit h3 { margin: 6px 0 8px; font-family: var(--vp-sans); font-weight: 800; font-stretch: 85%; font-size: clamp(1.15rem, 2.4vw, 1.5rem); line-height: 1.15; color: var(--vp-paper); }
+.vp-type { font-family: var(--vp-mono); font-weight: 400; font-size: .62em; color: var(--vp-lime); vertical-align: .18em; }
+.vp-org { font-family: var(--vp-serif); font-style: italic; font-weight: 400; color: #c9ccb6; }
+.vp-points { list-style: none; padding: 0; display: grid; gap: 6px; max-width: 92ch; }
+.vp-points li { position: relative; padding-left: 18px; }
+.vp-points li::before { content: "+"; position: absolute; left: 0; color: #8fd16a; }
+.vp-points strong { color: var(--vp-paper); font-weight: 600; }
+.vp-tags { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.vp-tags li { font-size: 11px; color: var(--vp-lime); border: 1px solid #4a4c3c; border-radius: 999px; padding: 3px 10px; }
+.vp-log-end { margin-top: 22px; }
+
+@media (max-width: 600px) {
+  .vp-log { rotate: 0deg; font-size: 12.5px; }
+  .vp-when { margin-left: 0; width: 100%; }
+}

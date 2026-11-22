@@ -3,6 +3,7 @@ import Nav from '@/sections/Nav';
 import Desk from '@/sections/Desk';
 import Manifesto from '@/sections/Manifesto';
 import Projects from '@/sections/Projects';
+import Experience from '@/sections/Experience';
 import About from '@/sections/About';
 import Contact, { Footer } from '@/sections/Contact';
 import { usePageMeta } from '@/hooks/usePageMeta';
@@ -21,6 +22,7 @@ export default function Home() {
         <Desk />
         <Manifesto />
         <Projects />
+        <Experience />
         <About />
         <Contact />
       </main>

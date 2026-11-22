@@ -1,11 +1,12 @@
 import { links, site } from '@/data/site';
+import { projects } from '@/data/projects';
 
 const RECEIPT = [
   ['devops & infra', 'x1'],
   ['ai/ml systems', 'x1'],
   ['backend engineering', 'x1'],
   ['full-stack, when needed', 'x1'],
-  ['shipped projects', 'x6'],
+  ['shipped projects', `x${projects.length}`],
   ['coffee consumed', '∞'],
 ];
 

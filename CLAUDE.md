@@ -15,7 +15,8 @@ Ved Narvekar's personal portfolio: React 18 + Vite + TypeScript, Framer Motion, 
 - `src/pages/`: routes (`Home`, `UnderDevelopment`, `NotFound`)
 - `src/sections/`: home page sections, one file each
 - `src/components/`: shared pieces (`ProjectDrawer`, `StartLights`)
-- `src/data/projects.ts`, `src/data/site.ts`: all editable content (projects, links, bio, F1, rides)
+- `src/data/projects.ts`, `src/data/experience.ts`, `src/data/site.ts`: all editable content (projects, career log, links, bio, F1, rides)
+- `public/resume.pdf`: the source of truth for roles, projects and numbers
 - `src/styles/`: `tokens.css` plus one stylesheet per section in `sections/`
 - `src/hooks/usePageMeta.ts`: per-page title, description, canonical and robots
 
