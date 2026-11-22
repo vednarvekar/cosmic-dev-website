@@ -95,11 +95,3 @@ export const projects: Project[] = [
     preview: 'faithfulness   0.87 ▲\nrelevancy      0.91 ▲\nregressions    0\nci: passed ✓',
   },
 ];
-
-export const links = {
-  github: 'https://github.com/vednarvekar',
-  linkedin: 'https://www.linkedin.com/in/ved-narvekar/',
-  x: 'https://x.com/VedNarvekar',
-  resume: '/resume.pdf',
-  email: '', // TODO(ved): add your email
-};

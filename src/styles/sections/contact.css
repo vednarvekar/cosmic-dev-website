@@ -1,0 +1,18 @@
+/* Contact receipt and footer */
+/* contact */
+.vp-contact { background: var(--vp-olive); color: var(--vp-paper); padding-block: 100px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+.vp-contact h2 { margin: 0; font-weight: 900; font-stretch: 75%; text-transform: uppercase; font-size: clamp(3.4rem, 10vw, 9rem); line-height: .84; letter-spacing: -.04em; }
+.vp-contact h2 em { font-family: var(--vp-serif); font-weight: 400; text-transform: none; color: var(--vp-lime); }
+.vp-links { list-style: none; padding: 0; margin-bottom: 0; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.vp-links a { color: var(--vp-paper); font-family: var(--vp-mono); font-size: 12px; border: 1px solid #5a5c48; padding: 9px 14px; border-radius: 999px; text-decoration: none; transition: background .2s, color .2s; }
+.vp-links a:hover { background: var(--vp-lime); color: var(--vp-ink); }
+.vp-receipt { background: #fff; color: var(--vp-ink); font-family: var(--vp-mono); font-size: 12px; padding: 22px 20px 30px; width: min(320px, 100%); justify-self: center; transform: rotate(3deg); transition: transform .3s;
+  clip-path: polygon(0 0,100% 0,100% 100%,95% 97%,90% 100%,85% 97%,80% 100%,75% 97%,70% 100%,65% 97%,60% 100%,55% 97%,50% 100%,45% 97%,40% 100%,35% 97%,30% 100%,25% 97%,20% 100%,15% 97%,10% 100%,5% 97%,0 100%); }
+.vp-receipt:hover { transform: rotate(0); }
+.vp-receipt h3 { text-align: center; margin: 0 0 4px; font-size: 14px; }
+.vp-c { text-align: center; color: var(--vp-mute); margin-bottom: 12px; }
+.vp-r { display: flex; justify-content: space-between; border-top: 1px dashed #bbb; padding: 6px 0; }
+.vp-tot { font-weight: 600; border-top: 2px solid var(--vp-ink); }
+.vp-bar { height: 44px; margin-top: 14px; background: repeating-linear-gradient(90deg, var(--vp-ink) 0 2px, transparent 2px 4px, var(--vp-ink) 4px 5px, transparent 5px 9px); }
+@media (max-width: 860px) { .vp-contact { grid-template-columns: 1fr; } }
+.vp-footer { background: var(--vp-olive); color: var(--vp-mute); font-family: var(--vp-mono); font-size: 11px; padding: 0 16px 30px; text-align: center; }

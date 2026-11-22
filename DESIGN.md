@@ -8,13 +8,14 @@ The site is **Ved's desk**, a physical workspace you can touch. Every section is
 
 | Section | Object | File |
 |---|---|---|
-| Intro | `ved.exe` boot screen: "entering Ved's universe" | `src/components/portfolio/BootGate.tsx` |
-| Hero | The desk: draggable polaroid, sticky notes, terminal, keycaps, mug | `src/components/portfolio/Desk.tsx` |
-| Manifesto | Olive band with a lime marquee and words that light up on scroll | `src/components/portfolio/Manifesto.tsx` |
-| Projects | A wooden shelf of **floppy disks**; clicking one slides in a drawer | `src/components/portfolio/DiskShelf.tsx` |
-| About | Tilted polaroids and fun-fact chips ("Off the terminal, I'm just Ved") | `LifeAndContact.tsx` → `Life` |
-| Contact | "Let's build something real" with a shop **receipt** ("TOTAL: the ultimate package") | `LifeAndContact.tsx` → `Contact` |
-| Under development | The project's floppy disk mid-write, a sticky note, a WIP git log | `src/components/UnderDevelopmentPage.tsx` |
+| Intro | `ved.exe` boot screen: "entering Ved's universe" | `src/sections/Intro.tsx` |
+| Nav | Floating pill nav | `src/sections/Nav.tsx` |
+| Hero | The desk: draggable polaroid, sticky notes, terminal, keycaps, mug, and the F1 start-lights game | `src/sections/Desk.tsx`, `src/components/StartLights.tsx` |
+| Manifesto | Olive band with a lime marquee and words that light up on scroll | `src/sections/Manifesto.tsx` |
+| Projects | A wooden shelf of **floppy disks**; clicking one slides in a drawer | `src/sections/Projects.tsx`, `src/components/ProjectDrawer.tsx` |
+| About | "Off the terminal, I'm just Ved": polaroids and fact chips, then the "Sundays are for F1" pinboard (paddock pass, flip-able driver cards, ride log) | `src/sections/About.tsx` |
+| Contact | "Let's build something real" with a shop **receipt** ("TOTAL: the ultimate package") | `src/sections/Contact.tsx` |
+| Under development | The project's floppy disk mid-write, a sticky note, a WIP git log | `src/pages/UnderDevelopment.tsx` |
 | 404 | "This page fell off the desk", a terminal echoing the missing path | `src/pages/NotFound.tsx` |
 
 **The test for anything new:** what object on Ved's desk is it? A blog could be a notebook, a timeline a calendar, testimonials notes pinned to a corkboard, a skills list a box of keycaps. If it can't be an object, it at least has to use the same materials (paper, tape, ink, lime).
@@ -26,11 +27,13 @@ The site is **Ved's desk**, a physical workspace you can touch. Every section is
 - Swiss spec-sheet minimalism
 - generic dark mode with a gradient accent
 
+**F1 and riding** are part of Ved's identity (Red Bull fan; Max, Lewis and Oscar fan; loves bike rides). Use team colours, driver names and numbers in our own styling, but **never official F1 or team logos or driver photos** (trademark and copyright).
+
 References Ved chose: landonorris.com (editorial type, olive and lime) and the personal, playful portfolios on wallofportfolios.in (Rebecca's sticky notes and receipt, Smriti's desk objects, Sharvari's zine shelf, Vanshika's game console, Subarshni's ENTER gate).
 
 ## 2. Tokens
 
-All tokens live on `.vp` at the top of `src/styles/portfolio.css`. Use these tokens; never write a raw colour in a component.
+All tokens live on `.vp` in `src/styles/tokens.css`. Use these tokens; never write a raw colour in a component.
 
 ### Colour
 
@@ -92,6 +95,11 @@ Reuse these classes before inventing new ones.
 | `.vp-facts span` | Pill chip | Tilts and fills yellow on hover. |
 | `.vp-hi` | Handwritten intro line | Caveat, muted, rotated −3°. |
 | `.vp-status` | Full-screen dotted-paper page | Base for any standalone page (see the under-development and 404 pages). |
+| `.vp-pass` | Paddock pass on a striped lanyard | Swings on hover. |
+| `.vp-card` | Trading card that flips | Front uses the `--team` colour; back is a yellow note. Content is `drivers` in `site.ts`. |
+| `.vp-ridelog` | Ruled notebook page with tape | Dashed route squiggle, handwritten list. |
+| `.vp-lights` | F1 start-light rig | Mini reaction-time game; desktop only. |
+| `.vp-sr` | Visually hidden text | For screen readers and search engines (e.g. project descriptions on the shelf). |
 
 Object conventions:
 - Paper objects get a **slight rotation** and a **soft shadow** (`0 4px 10px #0001` to `0 10px 30px #0003`). Buttons get **hard offset shadows** in ink, never blurred.
@@ -105,7 +113,7 @@ Use Framer Motion (already installed) for entrances and state changes, and CSS f
 - **Panels and reveals:** ease `[0.7, 0, 0.2, 1]` or `[0.8, 0, 0.2, 1]`, 0.5–0.9s (the drawer, the iris reveal).
 - **Hovers:** 0.15–0.35s CSS transitions; a playful overshoot `cubic-bezier(.3, 1.6, .5, 1)` is fine for lifts.
 - **Dragging:** desk objects use the custom pointer drag in `Desk.tsx`, which moves `left`/`top` and clamps to the desk. Do **not** use Framer's `drag` with `dragConstraints={ref}`: it shifts objects on window resize.
-- **Reduced motion:** every new animation must degrade under `prefers-reduced-motion` (the global block in `portfolio.css` kills CSS animations; use `useReducedMotion()` for JS timing, as `BootGate` does).
+- **Reduced motion:** every new animation must degrade under `prefers-reduced-motion` (the global block in `tokens.css` kills CSS animations; use `useReducedMotion()` for JS timing, as `Intro` does).
 - **The intro** plays once per browser session (`sessionStorage` key `ved-booted`), is skippable with any click or key, and lasts about 4 seconds. Keep it under about 5 seconds if you add lines.
 - One showpiece motion per section is enough. Don't stack effects.
 
@@ -118,20 +126,38 @@ Use Framer Motion (already installed) for entrances and state changes, and CSS f
 
 ## 6. Content and data
 
-- **Projects** live in `src/data/projects.ts` (name, disk label, colour, tag, year, description, stack, impact, terminal preview, GitHub URL). Add a project by adding an object there; the shelf and drawer pick it up. Projects without `githubUrl` link to `/under-development?project=<name>`.
-- **Links** (GitHub, LinkedIn, X, resume, email) are the `links` object in the same file.
-- **Placeholders** still to replace are marked `TODO(ved)`: photos (desk polaroid, three life polaroids), email, project impact numbers, and the hobbies line. Search for `TODO(ved)`.
-- Photos go in `public/` and replace the `.vp-ph` placeholder divs with `<img>` (keep `aspect-ratio: 1`, `object-fit: cover`).
+All editable content lives in `src/data/`:
+- `projects.ts`: projects (name, disk label, colour, tag, year, description, stack, impact, terminal preview, GitHub URL). Add a project by adding an object; the shelf, drawer and SEO text pick it up. Projects without `githubUrl` link to `/under-development?project=<name>`.
+- `site.ts`: site name, title and description (used for SEO), social links, the F1 driver cards, F1 details (team, fan since, favourite moment) and the ride log. Empty optional fields are simply hidden.
+
+Placeholders still to replace are marked `TODO(ved)` (photos, email, project impact numbers, F1 and ride details, card lines). Photos go in `public/` and replace the `.vp-ph` placeholder divs with `<img>` (keep `aspect-ratio: 1`, `object-fit: cover`, and a real `alt`).
 
 ## 7. Code conventions
 
-- All site CSS is in `src/styles/portfolio.css`, with every class prefixed `vp-` and scoped under the `.vp` root. Pages import that file and wrap content in `<div className="vp">`.
-- Tailwind and `src/components/ui` (shadcn) are left over from the old site. Don't use them for new portfolio UI; write `vp-` classes instead.
-- Keep components small and in `src/components/portfolio/`. Data in `src/data/`.
-- Accessibility: real `<button>`/`<a>` elements, visible focus (dashed ink outline is global), `aria-label` on icon-only buttons, `role="dialog"` on the drawer, and Escape closes overlays.
-- Before committing: `npx tsc -p tsconfig.app.json --noEmit`, `npm run build`, then check the page at desktop **and** 375px wide (no sideways scroll, nothing clipped).
+```
+src/
+  pages/        routes: Home, UnderDevelopment, NotFound
+  sections/     home page sections, one file each
+  components/   shared pieces used by sections (ProjectDrawer, StartLights)
+  hooks/        usePageMeta
+  data/         projects.ts, site.ts
+  styles/       index.css -> tokens.css + sections/<section>.css
+  test/         vitest + Testing Library
+```
 
-## 8. Browser tab and meta
+- Styling is plain CSS. There is no Tailwind and no UI kit. Each section has its own file in `src/styles/sections/`, every class is prefixed `vp-`, and pages wrap content in `<div className="vp">`. Register new stylesheets in `src/styles/index.css`.
+- Watch specificity: the reset in `tokens.css` uses bare element selectors on purpose so section classes can override it. Don't add `.vp <element>` rules that would beat a section's own class (that once broke the shelf's centring).
+- Keep components small. Sections go in `src/sections/`, shared bits in `src/components/`, and content in `src/data/`, never hard-coded in JSX.
+- Accessibility: real `<button>`/`<a>` elements, lists as `<ul>`, visible focus (dashed ink outline is global), `aria-label` on icon-only buttons, `role="dialog"` on the drawer, Escape closes overlays, and a "Skip to projects" link.
+- Before committing, run `npx tsc -p tsconfig.app.json --noEmit`, `npx eslint .`, `npm test` and `npm run build`. Then check the page at desktop **and** 375px wide (no sideways scroll, nothing clipped).
 
-- Tab title: **"Ved's Universe · Ved Narvekar"** (in `index.html`). Keep the name in it for search.
-- `theme-color` is the paper colour `#f3f1ea`.
+## 8. SEO rules
+
+- **One `<h1>` per page** (on the home page it's "Ved Narvekar" in the desk hero). Sections use `<h2>`, sub-blocks `<h3>`.
+- Every page calls `usePageMeta()` (`src/hooks/usePageMeta.ts`) to set its title, description, canonical, Open Graph and robots. Thin or error pages (`/under-development`, 404) pass `noindex: true`. Don't block them in `robots.txt`, or Google can't see the `noindex`.
+- `index.html` holds the static defaults crawlers see first: title, description, canonical, Open Graph and Twitter tags, JSON-LD (`Person`, `WebSite`, `ProfilePage`) and a `<noscript>` summary. Keep it in sync with `site.ts` when the bio, role or links change.
+- Tab title: **"Ved's Universe · Ved Narvekar"**. Keep the name in it for search.
+- Content that only appears on interaction (like the project drawer) must also exist in the DOM as text (see the `.vp-sr` descriptions on the shelf).
+- Add every new public route to `public/sitemap.xml`. `robots.txt` points to the sitemap.
+- The Open Graph image is `public/og.png` (1200x630). It still shows the old design; regenerate it once real photos are in.
+- `theme-color` and the manifest colours are the paper colour `#f3f1ea`. `vercel.json` sets long-lived caching on `/assets/*` and basic security headers.

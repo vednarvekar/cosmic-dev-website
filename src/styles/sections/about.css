@@ -1,0 +1,77 @@
+/* Off the clock: polaroids, facts, F1 and rides */
+/* life */
+.vp-about { max-width: 1200px; margin: 0 auto; padding-block: 100px; display: grid; gap: 90px; }
+.vp-life { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px; align-items: center; }
+.vp-life h2 { font-family: var(--vp-serif); font-weight: 400; font-size: clamp(2.4rem, 5.5vw, 4.6rem); line-height: .95; margin: 0; }
+.vp-life h2 em { background: var(--vp-lime); font-style: normal; padding: 0 .12em; }
+.vp-life p { font-size: 1.08rem; line-height: 1.65; color: #3f4034; max-width: 48ch; }
+.vp-facts { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.vp-facts li { font-family: var(--vp-mono); font-size: 12px; border: 1.5px solid var(--vp-ink); border-radius: 999px; padding: 7px 13px; background: #fff; transition: transform .2s, background .2s; }
+.vp-facts li:hover { transform: rotate(-4deg) scale(1.06); background: var(--vp-yellow); }
+.vp-pile { position: relative; height: 430px; }
+.vp-pile .vp-pol { position: absolute; transition: rotate .3s, scale .3s; }
+.vp-pile .vp-pol:nth-child(1) { left: 2%; top: 40px; rotate: -8deg; }
+.vp-pile .vp-pol:nth-child(2) { left: 34%; top: 0; rotate: 5deg; }
+.vp-pile .vp-pol:nth-child(3) { left: 20%; top: 200px; rotate: -2deg; }
+.vp-pile .vp-pol:hover { rotate: 0deg; scale: 1.08; z-index: 3; }
+@media (max-width: 860px) { .vp-life { grid-template-columns: 1fr; } .vp-pile { height: 380px; } .vp-pile .vp-pol { width: 160px; } }
+
+/* pinboard: paddock pass, driver cards, ride log */
+.vp-board { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 280px); grid-template-areas: "title title" "row log" "hint log"; gap: 18px 40px; align-items: start; }
+.vp-board-title { grid-area: title; margin: 0; font-weight: 900; font-stretch: 75%; text-transform: uppercase; font-size: clamp(2.4rem, 6vw, 4.6rem); line-height: .88; letter-spacing: -.03em; }
+.vp-board-title em { font-family: var(--vp-serif); font-weight: 400; text-transform: none; background: var(--vp-lime); padding: 0 .12em; }
+.vp-board-row { grid-area: row; list-style: none; padding: 26px 0 0; display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
+.vp-board-hint { grid-area: hint; margin: 0; font-family: var(--vp-hand); font-size: 20px; color: var(--vp-mute); }
+
+.vp-pass { position: relative; width: 172px; padding-top: 46px; transform-origin: 50% 0; }
+.vp-pass:hover { animation: vp-swing 1.4s ease-in-out; }
+@keyframes vp-swing { 25% { rotate: 4deg; } 55% { rotate: -3deg; } 80% { rotate: 1.5deg; } }
+.vp-lanyard { position: absolute; top: 0; left: 50%; width: 22px; height: 52px; translate: -50% 0; background: repeating-linear-gradient(90deg, var(--vp-ink) 0 4px, var(--vp-lime) 4px 8px); border-radius: 0 0 4px 4px; }
+.vp-pass-card { display: grid; gap: 8px; background: #fff; border: 2px solid var(--vp-ink); border-radius: 10px; padding: 16px 14px 14px; box-shadow: 0 8px 20px #0002; font-family: var(--vp-mono); font-size: 11px; rotate: -2deg; }
+.vp-pass-card small { text-transform: uppercase; letter-spacing: .08em; color: var(--vp-mute); font-size: 9px; }
+.vp-pass-card b { font-family: var(--vp-sans); font-weight: 900; font-stretch: 75%; text-transform: uppercase; font-size: 26px; line-height: .9; }
+.vp-pass-row { display: flex; justify-content: space-between; gap: 10px; border-top: 1px dashed #bbb; padding-top: 6px; }
+.vp-pass-row span { color: var(--vp-mute); }
+.vp-pass-row strong { font-weight: 600; text-align: right; }
+.vp-pass-bar { height: 26px; margin-top: 4px; background: repeating-linear-gradient(90deg, var(--vp-ink) 0 2px, transparent 2px 4px, var(--vp-ink) 4px 5px, transparent 5px 8px); }
+
+.vp-card-slot { width: 138px; perspective: 900px; }
+.vp-card-slot:nth-child(2) { rotate: 3deg; }
+.vp-card-slot:nth-child(3) { rotate: -2deg; margin-top: 18px; }
+.vp-card-slot:nth-child(4) { rotate: 4deg; }
+.vp-card { position: relative; display: block; width: 100%; aspect-ratio: 5 / 7; border: 0; padding: 0; background: none; color: inherit; transform-style: preserve-3d; transition: transform .6s cubic-bezier(.3, 1.3, .5, 1); }
+.vp-card:hover { transform: translateY(-8px); }
+.vp-card.flipped { transform: rotateY(180deg); }
+.vp-card-front, .vp-card-back { position: absolute; inset: 0; border-radius: 10px; backface-visibility: hidden; box-shadow: 0 8px 20px #0002; display: grid; text-align: left; }
+.vp-card-front { background: var(--team); color: #fff; padding: 12px; grid-template-rows: 1fr auto auto auto; border: 5px solid #fff; outline: 1px solid #0002; }
+.vp-card-num { font-family: var(--vp-sans); font-weight: 900; font-stretch: 75%; font-size: 64px; line-height: .8; opacity: .95; }
+.vp-card-name { font-family: var(--vp-sans); font-weight: 800; font-stretch: 80%; text-transform: uppercase; font-size: 15px; line-height: 1; }
+.vp-card-team { font-family: var(--vp-mono); font-size: 9px; text-transform: uppercase; opacity: .8; margin-top: 4px; }
+.vp-card-note { font-family: var(--vp-hand); font-size: 22px; line-height: 1; color: var(--vp-lime); margin-top: 6px; }
+.vp-card-back { transform: rotateY(180deg); background: var(--vp-yellow); padding: 14px; align-content: center; gap: 8px; font-family: var(--vp-hand); font-size: 20px; line-height: 1.1; }
+.vp-card-back small { font-family: var(--vp-mono); font-size: 9px; text-transform: uppercase; opacity: .6; }
+
+.vp-ridelog { grid-area: log; background: #fff; padding: 18px 18px 22px 34px; box-shadow: 0 8px 20px #0002; rotate: 2deg; position: relative; font-family: var(--vp-hand); font-size: 20px;
+  background-image: linear-gradient(90deg, transparent 22px, #ffb3c1 22px 23px, transparent 23px), repeating-linear-gradient(transparent 0 29px, #cfe0f2 29px 30px); }
+.vp-ridelog::before { content: ""; position: absolute; top: -10px; left: 50%; width: 70px; height: 20px; translate: -50% 0; rotate: -3deg; background: #fff8; border: 1px solid #0001; }
+.vp-ridelog h3 { margin: 0 0 4px; font-family: var(--vp-sans); font-weight: 900; font-stretch: 75%; text-transform: uppercase; font-size: 24px; }
+.vp-route { width: 100%; height: auto; }
+.vp-route path { fill: none; stroke: var(--vp-ink); stroke-width: 2.5; stroke-dasharray: 6 6; }
+.vp-route circle { fill: var(--vp-lime); stroke: var(--vp-ink); stroke-width: 2; }
+.vp-ridelog dl { display: grid; grid-template-columns: auto 1fr; gap: 0 10px; margin: 6px 0; }
+.vp-ridelog dt { color: var(--vp-mute); }
+.vp-ridelog dd { margin: 0; }
+.vp-ridelog ul { padding-left: 18px; line-height: 1.5; }
+
+@media (max-width: 860px) {
+  .vp-board { grid-template-columns: 1fr; grid-template-areas: "title" "row" "hint" "log"; }
+  .vp-ridelog { max-width: 320px; }
+}
+@media (max-width: 480px) {
+  .vp-board-row { gap: 16px; justify-content: center; }
+  .vp-card-slot { width: calc(50% - 8px); }
+  .vp-pass { width: calc(50% - 8px); }
+  .vp-card-num { font-size: 56px; }
+}
+.vp-life > div:last-child { display: grid; gap: 16px; align-content: center; min-width: 0; }
+.vp-life .vp-facts { margin-top: 4px; }

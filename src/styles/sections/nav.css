@@ -1,0 +1,8 @@
+/* Floating pill nav */
+/* nav */
+.vp-nav { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 14px); left: 50%; transform: translateX(-50%); z-index: 20; display: flex; gap: 4px; background: #fffd; backdrop-filter: blur(8px); border: 1px solid var(--vp-dot); border-radius: 999px; padding: 5px; font-family: var(--vp-mono); font-size: 12px; }
+.vp-nav a { color: var(--vp-ink); text-decoration: none; padding: 8px 14px; border-radius: 999px; white-space: nowrap; transition: background .2s, color .2s; }
+@media (max-width: 420px) { .vp-nav a { padding: 8px 11px; } }
+.vp-nav a:hover { background: var(--vp-ink); color: var(--vp-paper); }
+.vp-nav a.vp-cta { background: var(--vp-lime); }
+.vp-nav a.vp-cta:hover { color: var(--vp-ink); background: var(--vp-yellow); }

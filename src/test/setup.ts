@@ -13,3 +13,14 @@ Object.defineProperty(window, "matchMedia", {
     dispatchEvent: () => {},
   }),
 });
+
+// framer-motion's whileInView needs IntersectionObserver, which jsdom lacks
+class IO {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+  takeRecords() {
+    return [];
+  }
+}
+Object.defineProperty(window, 'IntersectionObserver', { writable: true, value: IO });

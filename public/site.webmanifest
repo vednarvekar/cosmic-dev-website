@@ -1,5 +1,5 @@
 {
-  "name": "Ved Narvekar",
+  "name": "Ved's Universe \u00b7 Ved Narvekar",
   "short_name": "Ved",
   "icons": [
     {
@@ -12,16 +12,19 @@
       "src": "/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any maskable"
     },
     {
       "src": "/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any maskable"
     }
   ],
-  "theme_color": "#000000",
-  "background_color": "#000000",
-  "display": "standalone"
+  "theme_color": "#f3f1ea",
+  "background_color": "#f3f1ea",
+  "display": "standalone",
+  "description": "Backend & AI engineer Ved Narvekar's portfolio",
+  "start_url": "/",
+  "scope": "/"
 }

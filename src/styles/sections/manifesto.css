@@ -1,0 +1,10 @@
+/* Manifesto band */
+/* manifesto */
+.vp-dark { background: var(--vp-olive); color: var(--vp-paper); position: relative; overflow: hidden; }
+.vp-marq { display: flex; white-space: nowrap; font-weight: 900; font-stretch: 75%; text-transform: uppercase; font-size: clamp(3.4rem, 11vw, 9rem); line-height: .9; color: var(--vp-lime); padding-top: 50px; }
+.vp-marq div { animation: vp-mq 24s linear infinite; padding-right: .4em; }
+@keyframes vp-mq { to { transform: translateX(-100%); } }
+.vp-manifesto { max-width: 1100px; margin: 0 auto; padding-block: 90px 110px; text-align: center; font-weight: 800; font-stretch: 85%; text-transform: uppercase; font-size: clamp(1.9rem, 5vw, 4.2rem); line-height: 1.02; letter-spacing: -.02em; }
+.vp-manifesto em { font-family: var(--vp-serif); font-weight: 400; text-transform: none; color: var(--vp-lime); font-size: 1.12em; }
+.vp-w { opacity: .14; transition: opacity .35s; }
+.vp-w.on { opacity: 1; }

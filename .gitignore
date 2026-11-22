@@ -25,3 +25,7 @@ dist-ssr
 
 # Windows download markers (names contain ":" and break checkout on Windows)
 *:Zone.Identifier
+
+# local tooling output
+.playwright-mcp/
+.claude/

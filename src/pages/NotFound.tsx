@@ -1,10 +1,15 @@
-import '@/styles/portfolio.css';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { usePageMeta } from '@/hooks/usePageMeta';
 
 /** 404: a page that fell off the desk. */
-const NotFound = () => {
+export default function NotFound() {
   const { pathname } = useLocation();
+  usePageMeta({
+    title: 'Page not found · Ved Narvekar',
+    description: "This page fell off the desk. Head back to Ved Narvekar's portfolio.",
+    noindex: true,
+  });
 
   return (
     <div className="vp">
@@ -58,6 +63,4 @@ const NotFound = () => {
       </main>
     </div>
   );
-};
-
-export default NotFound;
+}

@@ -7,16 +7,20 @@ Ved Narvekar's personal portfolio: React 18 + Vite + TypeScript, Framer Motion, 
 ## Commands
 - `npm run dev`: dev server on http://localhost:8080
 - `npx tsc -p tsconfig.app.json --noEmit`: type-check
+- `npx eslint .`: lint
+- `npm test`: vitest
 - `npm run build`: production build
 
 ## Where things are
-- `src/pages/Index.tsx`: the home page composition
-- `src/components/portfolio/`: the site's sections
-- `src/data/projects.ts`: projects and social links (edit content here)
-- `src/styles/portfolio.css`: all site styles (`vp-` prefix, tokens at the top)
-- `src/components/UnderDevelopmentPage.tsx`, `src/pages/NotFound.tsx`: status pages
+- `src/pages/`: routes (`Home`, `UnderDevelopment`, `NotFound`)
+- `src/sections/`: home page sections, one file each
+- `src/components/`: shared pieces (`ProjectDrawer`, `StartLights`)
+- `src/data/projects.ts`, `src/data/site.ts`: all editable content (projects, links, bio, F1, rides)
+- `src/styles/`: `tokens.css` plus one stylesheet per section in `sections/`
+- `src/hooks/usePageMeta.ts`: per-page title, description, canonical and robots
 
 ## Rules
-- Style with `vp-` classes in `portfolio.css`; don't use Tailwind utilities or `src/components/ui` (shadcn leftovers) for portfolio UI.
+- Plain CSS only (no Tailwind, no UI kits): `vp-` classes in `src/styles/sections/<section>.css`.
+- Every page sets its meta with `usePageMeta()` and keeps exactly one `<h1>` (see DESIGN.md section 8, SEO rules).
 - Verify every visual change at desktop and at 375px wide before committing.
 - Never commit files with `:` in the name (for example `*:Zone.Identifier`); they break checkout on Windows.
