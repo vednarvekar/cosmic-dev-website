@@ -1,9 +1,9 @@
 import { links, site } from '@/data/site';
 
 const RECEIPT = [
-  ['backend engineering', 'x1'],
   ['devops & infra', 'x1'],
   ['ai/ml systems', 'x1'],
+  ['backend engineering', 'x1'],
   ['full-stack, when needed', 'x1'],
   ['shipped projects', 'x6'],
   ['coffee consumed', '∞'],

@@ -1,6 +1,6 @@
 # Ved's Universe: design system
 
-This is the rulebook for vednarvekar.com. Read it before adding or changing anything visual. The site is a personal portfolio for Ved Narvekar, a backend & AI engineer. It should feel like walking into a person's world, not reading a template.
+This is the rulebook for vednarvekar.com. Read it before adding or changing anything visual. The site is a personal portfolio for Ved Narvekar, a DevOps & AI engineer. It should feel like walking into a person's world, not reading a template.
 
 ## 1. The concept
 
@@ -119,7 +119,7 @@ Use Framer Motion (already installed) for entrances and state changes, and CSS f
 
 ## 5. Voice and copy
 
-- First person, casual, confident and a bit funny: "I build backends that don't break", "my first server crashed at 2am. I'm still here."
+- First person, casual, confident and a bit funny: "I build infra that doesn't break", "my first server crashed at 2am. I'm still here."
 - Lowercase is fine for handwritten and terminal bits; headlines are uppercase plus a serif accent.
 - Be specific and technical where it counts (project descriptions name the real stack), and playful around it.
 - No buzzword soup, no "passionate developer", no emoji in headlines. Emoji only in fact chips.
@@ -159,5 +159,5 @@ src/
 - Tab title: **"Ved's Universe · Ved Narvekar"**. Keep the name in it for search.
 - Content that only appears on interaction (like the project drawer) must also exist in the DOM as text (see the `.vp-sr` descriptions on the shelf).
 - Add every new public route to `public/sitemap.xml`. `robots.txt` points to the sitemap.
-- The Open Graph image is `public/og.png` (1200x630). It still shows the old design; regenerate it once real photos are in.
+- The Open Graph image is `public/og.png` (1200x630), and icons live in `public/`. Both are rendered from `scripts/brand/` (see its README). Regenerate them when the headline, role or photos change.
 - `theme-color` and the manifest colours are the paper colour `#f3f1ea`. `vercel.json` sets long-lived caching on `/assets/*` and basic security headers.

@@ -5,9 +5,9 @@ export const site = {
   url: 'https://vednarvekar.com',
   name: 'Ved Narvekar',
   title: "Ved's Universe · Ved Narvekar",
-  role: 'Backend & AI Engineer',
+  role: 'DevOps & AI Engineer',
   description:
-    'Ved Narvekar is a backend & AI engineer from India building APIs, job queues, RAG pipelines and LLM evals. Explore his projects, stack and story.',
+    'Ved Narvekar is a DevOps & AI engineer from India: infrastructure, CI/CD, observability, RAG pipelines and LLM evals. See his projects and story.',
   location: 'India',
 };
 

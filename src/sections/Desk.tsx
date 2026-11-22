@@ -106,7 +106,7 @@ export default function Desk() {
           Ved <em>Narvekar</em>
         </h1>
         <p>
-          I build <mark>backends that don't break</mark> and AI that knows when it's wrong. Backend &amp; AI
+          I build <mark>infra that doesn't break</mark> and AI that knows when it's wrong. DevOps &amp; AI
           engineer from India.
         </p>
       </motion.div>
@@ -118,7 +118,7 @@ export default function Desk() {
       </DeskObject>
 
       <DeskObject deskRef={deskRef} delay={0.3} className="vp-sticky" rotate={5} style={{ left: 'min(72%, calc(100% - 160px))', top: '14%', background: 'var(--vp-yellow)' }}>
-        <small>status</small>open to backend &amp; AI roles ✦
+        <small>status</small>open to devops &amp; AI roles ✦
       </DeskObject>
 
       <DeskObject deskRef={deskRef} delay={0.4} hideOnMobile className="vp-sticky" rotate={-4} style={{ left: '76%', top: '58%', background: 'var(--vp-pink)' }}>
@@ -132,8 +132,8 @@ export default function Desk() {
           <i />
         </div>
         <pre>
-          <b>~$</b> whoami{'\n'}backend &amp; ai engineer{'\n'}
-          <b>~$</b> cat stack.txt{'\n'}node · go · ts · python{'\n'}postgres · redis · pytorch
+          <b>~$</b> whoami{'\n'}devops &amp; ai engineer{'\n'}
+          <b>~$</b> cat stack.txt{'\n'}docker · k8s · nginx · ci/cd{'\n'}node · go · python · pytorch
         </pre>
       </DeskObject>
 

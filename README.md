@@ -1,6 +1,6 @@
 # Ved's Universe
 
-The source for [vednarvekar.com](https://vednarvekar.com), the portfolio of Ved Narvekar, a backend & AI engineer.
+The source for [vednarvekar.com](https://vednarvekar.com), the portfolio of Ved Narvekar, a DevOps & AI engineer.
 
 The site is built as a desk you can play with: a `ved.exe` boot intro, draggable objects, an F1 start-lights mini game, projects as floppy disks on a shelf, and a receipt for a contact card.
 
