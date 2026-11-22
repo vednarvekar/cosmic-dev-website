@@ -12,13 +12,16 @@ html:has(.vp) { scroll-behavior: smooth; background: #f3f1ea; }
 .vp :focus-visible { outline: 2px dashed var(--vp-ink); outline-offset: 4px; }
 .vp-g { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 
-/* gate */
-.vp-gate { position: fixed; inset: 0; z-index: 50; background: var(--vp-ink); color: var(--vp-lime); display: grid; place-items: center; font-family: var(--vp-mono); }
-.vp-gate > div { display: grid; justify-items: center; padding: 16px; }
-.vp-gate pre { margin: 0 0 24px; font-size: 13px; line-height: 1.7; color: #9fa38b; min-height: 9em; width: 290px; }
-.vp-gate button:first-of-type { background: var(--vp-lime); color: var(--vp-ink); border: 0; padding: 14px 30px; font-family: var(--vp-mono); font-weight: 600; letter-spacing: .1em; box-shadow: 5px 5px 0 #fff; transition: transform .15s, box-shadow .15s; }
-.vp-gate button:first-of-type:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #fff; }
-.vp-gate .vp-gate-skip { margin-top: 16px; background: none; border: 0; color: #5e6150; font-family: var(--vp-mono); font-size: 11px; }
+/* gate (auto-playing intro) */
+.vp-gate { position: fixed; inset: 0; z-index: 50; background: var(--vp-ink); color: var(--vp-lime); display: grid; place-items: center; font-family: var(--vp-mono); cursor: pointer; }
+.vp-boot { margin: 0; font-family: var(--vp-mono); font-size: 13px; line-height: 1.8; color: #9fa38b; width: min(300px, 86vw); min-height: 8em; }
+.vp-caret { color: var(--vp-lime); animation: vp-blink 1s steps(1) infinite; }
+@keyframes vp-blink { 50% { opacity: 0; } }
+.vp-enter { display: grid; justify-items: center; gap: 6px; text-align: center; padding: 16px; }
+.vp-enter span { font-family: var(--vp-hand); font-size: clamp(1.4rem, 3vw, 2rem); color: #9fa38b; }
+.vp-enter strong { font-family: var(--vp-sans); font-weight: 900; font-stretch: 75%; text-transform: uppercase; font-size: clamp(3rem, 11vw, 8rem); line-height: .85; color: var(--vp-paper); }
+.vp-enter em { font-family: var(--vp-serif); font-weight: 400; text-transform: none; color: var(--vp-lime); }
+.vp-gate-skip { position: absolute; bottom: calc(env(safe-area-inset-bottom, 0px) + 24px); left: 0; right: 0; text-align: center; color: #5e6150; font-size: 11px; }
 
 /* nav */
 .vp-nav { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 14px); left: 50%; transform: translateX(-50%); z-index: 20; display: flex; gap: 4px; background: #fffd; backdrop-filter: blur(8px); border: 1px solid var(--vp-dot); border-radius: 999px; padding: 5px; font-family: var(--vp-mono); font-size: 12px; }
@@ -149,3 +152,4 @@ html:has(.vp) { scroll-behavior: smooth; background: #f3f1ea; }
   .vp-w { opacity: 1; }
   html:has(.vp) { scroll-behavior: auto; }
 }
+@media (max-width: 600px) { .vp-enter em { display: block; } }
