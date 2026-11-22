@@ -66,11 +66,13 @@ export function Contact() {
         <div className="vp-receipt">
           <h4>VED.DEV STORE</h4>
           <div className="vp-c">order #2026 · thank you!</div>
-          <div className="vp-r"><span>backend engineer</span><span>x1</span></div>
-          <div className="vp-r"><span>ai/ml know-how</span><span>x1</span></div>
+          <div className="vp-r"><span>backend engineering</span><span>x1</span></div>
+          <div className="vp-r"><span>devops &amp; infra</span><span>x1</span></div>
+          <div className="vp-r"><span>ai/ml systems</span><span>x1</span></div>
+          <div className="vp-r"><span>full-stack, when needed</span><span>x1</span></div>
           <div className="vp-r"><span>shipped projects</span><span>x6</span></div>
           <div className="vp-r"><span>coffee consumed</span><span>∞</span></div>
-          <div className="vp-r vp-tot"><span>TOTAL</span><span>hire me</span></div>
+          <div className="vp-r vp-tot"><span>TOTAL</span><span>the ultimate package</span></div>
           <div className="vp-bar" />
         </div>
       </section>

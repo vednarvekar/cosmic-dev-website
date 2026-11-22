@@ -13,7 +13,7 @@ The site is **Ved's desk**, a physical workspace you can touch. Every section is
 | Manifesto | Olive band with a lime marquee and words that light up on scroll | `src/components/portfolio/Manifesto.tsx` |
 | Projects | A wooden shelf of **floppy disks**; clicking one slides in a drawer | `src/components/portfolio/DiskShelf.tsx` |
 | About | Tilted polaroids and fun-fact chips ("Off the terminal, I'm just Ved") | `LifeAndContact.tsx` → `Life` |
-| Contact | "Let's build something real" with a shop **receipt** ("TOTAL: hire me") | `LifeAndContact.tsx` → `Contact` |
+| Contact | "Let's build something real" with a shop **receipt** ("TOTAL: the ultimate package") | `LifeAndContact.tsx` → `Contact` |
 | Under development | The project's floppy disk mid-write, a sticky note, a WIP git log | `src/components/UnderDevelopmentPage.tsx` |
 | 404 | "This page fell off the desk", a terminal echoing the missing path | `src/pages/NotFound.tsx` |
 
