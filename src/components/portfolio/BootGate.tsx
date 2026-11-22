@@ -100,7 +100,10 @@ export default function BootGate() {
               <b>{String(pct).padStart(3, '0')}%</b>
             </div>
           </motion.div>
-          <span className="vp-gate-skip">click or press any key to skip</span>
+          <span className="vp-gate-skip">
+            <span className="vp-skip-mouse">click or press any key to skip</span>
+            <span className="vp-skip-touch">tap anywhere to skip</span>
+          </span>
         </motion.div>
       )}
     </AnimatePresence>

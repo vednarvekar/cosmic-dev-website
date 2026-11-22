@@ -157,3 +157,16 @@ html:has(.vp) { scroll-behavior: smooth; background: #f3f1ea; }
   html:has(.vp) { scroll-behavior: auto; }
 }
 @media (max-width: 600px) { .vp-enter em { display: block; } }
+
+/* intro on phones: full-screen poster layout, title fills the width */
+.vp-skip-touch { display: none; }
+@media (hover: none) { .vp-skip-touch { display: inline; } .vp-skip-mouse { display: none; } }
+@media (max-width: 600px) {
+  .vp-intro { height: 100svh; align-content: space-between; justify-items: start; gap: 0; padding: calc(env(safe-area-inset-top, 0px) + 14vh) 24px calc(env(safe-area-inset-bottom, 0px) + 70px); }
+  .vp-enter { justify-items: start; text-align: left; padding: 0; gap: 2px; }
+  .vp-enter span { font-size: 1.9rem; }
+  .vp-enter strong { font-size: clamp(4.4rem, 25vw, 8rem); line-height: .82; }
+  .vp-boot { width: 100%; font-size: 12.5px; min-height: 10em; }
+  .vp-progress { width: 100%; }
+  .vp-gate-skip { bottom: calc(env(safe-area-inset-bottom, 0px) + 28px); left: 24px; right: auto; text-align: left; }
+}
